@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トリケラテクノ流｜最短で1曲完成するためのロードマップPROコース</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --deep: #0d0d0d;
+    --panel: #111111;
+    --border: #1e1e1e;
+    --accent: #00c8ff;
+    --accent2: #0080ff;
+    --text: #e8e8e8;
+    --muted: #666;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE TEXTURE ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    align-items: stretch;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-image-wrap {
+    flex: 0 0 420px;
+    position: relative;
+  }
+
+  .hero-product-img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,200,255,0.08);
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  @media (max-width: 860px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+    .hero-image-wrap {
+      flex: 0 0 auto;
+      width: 80%;
+      max-width: 360px;
+    }
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,255,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,255,200,0.05) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hero-video-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8,8,8,0.72);
+    z-index: 1;
+  }
+
+  .hero-video-wrap iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh; /* 16:9 */
+    height: 100vh;
+    min-width: 100%;
+    min-height: 56.25vw;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+    z-index: 2;
+  }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding: 6px 16px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: clamp(13px, 2vw, 15px);
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-title span {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: var(--muted);
+    margin-top: 28px;
+    max-width: 560px;
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-desc {
+    font-size: clamp(12px, 1.8vw, 14px);
+    color: var(--muted);
+    margin-top: 20px;
+    max-width: 560px;
+    line-height: 1.9;
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .hero-subtitle strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .sold-badge {
+    margin-top: 40px;
+    position: relative;
+    z-index: 3;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .sold-badge-inner {
+    display: inline-block;
+    background: rgba(0,200,255,0.08);
+    border: 1px solid rgba(0,200,255,0.3);
+    padding: 12px 28px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .sold-badge-inner strong {
+    color: var(--accent);
+  }
+
+  /* ===== BUY BUTTON ===== */
+  .buy-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    padding: 18px 48px;
+    text-decoration: none;
+    margin-top: 28px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .buy-btn:hover {
+    background: #33d6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,200,255,0.3);
+  }
+
+  .buy-btn:active {
+    transform: translateY(0);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    animation: bounce 2s infinite;
+    z-index: 3;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 100px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+  }
+
+  h2 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+
+  p strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .pain-bridge {
+    margin-top: 32px;
+    font-size: 18px;
+    color: var(--text);
+    letter-spacing: 0.03em;
+    text-align: center;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+    margin: 0;
+  }
+
+  /* ===== PAIN LOOP ANIMATION ===== */
+  .pain-section-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .pain-loop-bg {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 180px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
+  .pain-loop-track {
+    display: flex;
+    flex-direction: column;
+    animation: loopScroll 8s linear infinite;
+  }
+  .pain-loop-word {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    opacity: 0.055;
+    padding: 14px 0;
+    white-space: nowrap;
+    text-align: right;
+    padding-right: 12px;
+  }
+  .pain-loop-word.accent {
+    color: var(--accent);
+    opacity: 0.07;
+  }
+  @keyframes loopScroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  /* ===== PAIN SECTION ===== */
+  .pain-list {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--panel);
+    border-left: 3px solid #333;
+    font-size: 15px;
+    color: #aaa;
+    transition: border-color 0.3s;
+  }
+
+  .pain-list li:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .pain-list li::before {
+    content: '—';
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ===== WARNING BG ===== */
+  .warning-section-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .warning-section-wrap::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    height: 420px;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 24px,
+      rgba(0,200,255,0.028) 24px,
+      rgba(0,200,255,0.028) 48px
+    );
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .warning-tape-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 380px;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0.045;
+    transform: rotate(-12deg) scale(1.3);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    gap: 0;
+  }
+  .warning-tape-row {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    white-space: nowrap;
+    line-height: 2.4;
+  }
+  .warning-section-wrap .section-label,
+  .warning-section-wrap h2,
+  .warning-section-wrap p,
+  .warning-section-wrap .trouble-ranking {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== PROFILE ===== */
+  .profile-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,200,255,0.05) 0%, transparent 70%);
+  }
+
+  .profile-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .profile-role {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ===== STEP LIST ===== */
+  .steps {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .step-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .step-item:hover {
+    background: rgba(0,200,255,0.02);
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 4px;
+    transition: color 0.2s;
+  }
+
+  .step-item:hover .step-num {
+    color: var(--accent);
+  }
+
+  .step-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ===== NOTE CAROUSEL ===== */
+  .note-carousel-wrap {
+    position: relative;
+    margin-top: 48px;
+    overflow: hidden;
+  }
+  .note-carousel-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+    cursor: grab;
+  }
+  .note-carousel-track::-webkit-scrollbar { display: none; }
+  .note-carousel-track.grabbing { cursor: grabbing; }
+  .note-carousel-item {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,200,255,0.15);
+    background: #0d0d0d;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+  }
+  .note-carousel-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .note-carousel-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: brightness(0.92) contrast(1.05);
+  }
+  .note-carousel-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(13,13,13,0.7) 100%);
+    pointer-events: none;
+  }
+  .note-carousel-body {
+    padding: 12px 14px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .note-carousel-label {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin: 0 0 6px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .note-carousel-title {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.6;
+    margin: 0 0 6px;
+  }
+  .note-carousel-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .note-carousel-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .note-carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,200,255,0.4);
+    background: transparent;
+    color: var(--accent);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .note-carousel-btn:hover { background: rgba(0,200,255,0.1); }
+
+  /* ===== WHAT'S INSIDE ===== */
+  .inside-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin-top: 48px;
+    border: 1px solid var(--border);
+  }
+
+  .inside-item {
+    background: var(--panel);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inside-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  .inside-item:hover::after {
+    width: 100%;
+  }
+
+  .inside-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .inside-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .inside-item p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ===== SUPPORT ===== */
+  .support-box {
+    border: 1px solid var(--border);
+    padding: 48px;
+    background: var(--panel);
+    margin-top: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .support-box::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,200,0.06) 0%, transparent 70%);
+  }
+
+  .support-list {
+    list-style: none;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .support-list li {
+    display: flex;
+    gap: 14px;
+    font-size: 15px;
+    color: #aaa;
+    align-items: flex-start;
+  }
+
+  .support-list li::before {
+    content: '✓';
+    color: var(--accent2);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ===== VOICE ===== */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .voice-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+  }
+
+  .voice-card::before {
+    content: '"';
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(0,200,255,0.08);
+    line-height: 1;
+  }
+
+  .voice-text {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .voice-author {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== PRICE ===== */
+  .price-section {
+    text-align: center;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%);
+  }
+
+  .price-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 48px;
+  }
+
+  .price-card {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 32px 28px 36px;
+    width: 100%;
+    max-width: 320px;
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-card--featured {
+    border-color: rgba(0,200,255,0.4);
+    box-shadow: 0 0 32px rgba(0,200,255,0.08);
+  }
+
+  .price-card-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+
+  .price-card-img {
+    width: 100%;
+    background: #1a1a1a;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 16px 0 0;
+  }
+
+  .price-card-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, #1a1a1a);
+    pointer-events: none;
+  }
+
+  .price-card-img img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.7));
+  }
+
+  .price-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .price-card-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-card-tax {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+
+  .price-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    flex: 1;
+  }
+
+  .price-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #ccc;
+    padding: 7px 0;
+    line-height: 1.5;
+  }
+
+  .price-checklist li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .price-card .buy-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  /* ===== TROUBLE RANKING ===== */
+  .trouble-ranking {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 48px;
+    border: 1px solid var(--border);
+  }
+
+  .trouble-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .trouble-item:last-child {
+    border-bottom: none;
+  }
+
+  .trouble-item:hover {
+    background: rgba(0,200,255,0.02);
+  }
+
+  .trouble-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 48px;
+    color: var(--accent);
+    background: rgba(0,200,255,0.04);
+    border-right: 1px solid var(--border);
+    line-height: 1;
+    padding: 28px 0;
+  }
+
+  .trouble-rank span {
+    font-size: 16px;
+    color: var(--muted);
+    margin-left: 2px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 300;
+  }
+
+  .trouble-content {
+    padding: 28px 32px;
+  }
+
+  .trouble-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+  }
+
+  .trouble-quote {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 2px solid #333;
+  }
+
+  .trouble-step {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+
+  /* ===== REVIEWS ===== */
+  .review-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 40px 0 48px;
+  }
+
+  .review-stat-item {
+    background: var(--panel);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .review-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+
+  .review-stat-unit {
+    font-size: 28px;
+    color: var(--muted);
+  }
+
+  .review-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 8px;
+    display: block;
+  }
+
+  .review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .review-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 32px 36px;
+    transition: border-color 0.3s;
+  }
+
+  .review-card:hover {
+    border-color: var(--accent);
+    border-left-color: var(--accent2);
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,200,255,0.1);
+    border: 1px solid rgba(0,200,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .review-meta {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 2px 0 0;
+    letter-spacing: 0.04em;
+  }
+
+  .review-stars {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .review-badge {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    border: 1px solid rgba(0,255,200,0.3);
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  .review-body {
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.9;
+    margin: 0 0 20px;
+    border-left: none;
+  }
+
+  .review-body strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .review-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .review-tag {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .review-card--featured {
+    border-left-color: var(--accent2);
+    background: rgba(0,255,200,0.03);
+  }
+
+  .review-badge--progress {
+    color: var(--muted);
+    border-color: #333;
+  }
+
+  /* ===== buy-btn はpricing内でも使用 ===== */
+
+  /* ===== FAQ ===== */
+  .faq-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-q {
+    padding: 24px 0;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    user-select: none;
+  }
+
+  .faq-q::after {
+    content: '+';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .faq-item.open .faq-q::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+    padding: 0;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-bottom: 24px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== HIGHLIGHT LINE ===== */
+  .hl {
+    position: relative;
+    display: inline;
+  }
+
+  .hl::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline 0.8s 1s ease forwards;
+  }
+
+  @keyframes underline {
+    to { transform: scaleX(1); }
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    background: var(--deep);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 48px;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .marquee-track span.accent {
+    color: var(--accent);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .profile-box { padding: 32px 24px; }
+    .price-box { padding: 48px 32px; }
+    .support-box { padding: 32px 24px; }
+    .inside-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner" style="flex-direction:column; align-items:center; text-align:center;">
+    <div class="hero-content" style="align-items:center; text-align:center;">
+      <div class="tag">FOR DTM BEGINNERS</div>
+      <p class="hero-eyebrow">最短で１曲完成するための</p>
+      <h1 class="hero-title">
+        ROADMAP<br>
+        <span>PROコース</span>
+      </h1>
+      <p class="hero-subtitle">
+        DTM初心者のための<strong>10STEP完全設計図</strong><br>
+        ＋3ヶ月個別マンツーマンサポート付き
+      </p>
+      <p class="hero-desc">
+        ゼロからでも1曲完成させるPROコースで、音楽制作の可能性を最大限に引き出しましょう。DTM初心者を対象としたこのPROコースでは、楽曲制作の基礎的な知識の解説からアイデア出し、アレンジ、そして最終的なマスタリングまで、必要なすべてのステップを丁寧に解説します。
+      </p>
+      <div class="sold-badge">
+        <a href="https://buy.stripe.com/dRm28k9R3f9afIHbqPgEg01" target="_blank" class="buy-btn">今すぐ購入する →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>10 STEPS</span><span class="accent">◆</span>
+    <span>30+ ARTICLES</span><span class="accent">◆</span>
+    <span>3ヶ月LINEサポート</span><span class="accent">◆</span>
+    <span>買い切り</span><span class="accent">◆</span>
+    <span>100件以上の相談実績</span><span class="accent">◆</span>
+    <span>音楽経験ゼロから2枚リリース</span><span class="accent">◆</span>
+    <span>返金保証あり</span><span class="accent">◆</span>
+    <!-- duplicate for seamless loop -->
+    <span>10 STEPS</span><span class="accent">◆</span>
+    <span>30+ ARTICLES</span><span class="accent">◆</span>
+    <span>3ヶ月LINEサポート</span><span class="accent">◆</span>
+    <span>買い切り</span><span class="accent">◆</span>
+    <span>100件以上の相談実績</span><span class="accent">◆</span>
+    <span>音楽経験ゼロから2枚リリース</span><span class="accent">◆</span>
+    <span>返金保証あり</span><span class="accent">◆</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== PAIN ===== -->
+<section class="reveal pain-section-wrap">
+  <div class="pain-loop-bg">
+    <div class="pain-loop-track">
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">完成しない</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">また明日</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <!-- duplicate for seamless loop -->
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">完成しない</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">また明日</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+      <span class="pain-loop-word">8小節</span>
+      <span class="pain-loop-word accent">LOOP →</span>
+    </div>
+  </div>
+  <div class="section-label">THE PROBLEM</div>
+  <h2>9割のDTMerが<br><em>1曲も完成できない</em><br>本当の理由</h2>
+  <p>才能でもセンスでもない。機材でもプラグインでもない。<br><strong>「正しい順番」を知らないまま作り続けているから。</strong></p>
+  <p>あなたにも、心当たりはありませんか？</p>
+  <ul class="pain-list">
+    <li>8小節のループは作れる。<br>でも、もう半年以上「完成した曲」がない。</li>
+    <li>プラグインは増えた。DAWも慣れた。<br>なのに、なぜか曲作りが終わらない。</li>
+    <li>本当は「センスがないのかも」と、<br>うっすら思い始めている。</li>
+  </ul>
+  <p class="pain-bridge">実は、<strong>これはあなただけじゃない。</strong></p>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== VOICE ===== -->
+<section class="reveal warning-section-wrap">
+  <div class="warning-tape-text" aria-hidden="true">
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+    <div class="warning-tape-row">⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING ⚠ WARNING</div>
+  </div>
+  <div class="section-label">AGITATION</div>
+  <h2>9割が<br><em>ここでつまづく</em></h2>
+  <p>100件以上の相談で分かった、<br><strong>9割が同じところでつまずく</strong>という衝撃の事実。<br>そのつまづきポイント、<strong>TOP3</strong>がこれ。</p>
+
+  <div class="trouble-ranking">
+
+    <div class="trouble-item">
+      <div class="trouble-rank">1<span>位</span></div>
+      <div class="trouble-content">
+        <h3>楽曲展開の行き詰まり</h3>
+        <p class="trouble-quote">「ループは作れる。でも、その先が作れない。」</p>
+        <p class="trouble-step">→ STEP7「アレンジ構成」で解決</p>
+      </div>
+    </div>
+
+    <div class="trouble-item">
+      <div class="trouble-rank">2<span>位</span></div>
+      <div class="trouble-content">
+        <h3>ボーカルが曲に馴染まない</h3>
+        <p class="trouble-quote">「ボーカルが浮いて聞こえる。」</p>
+        <p class="trouble-step">→ STEP4「ボーカル処理」で解決</p>
+      </div>
+    </div>
+
+    <div class="trouble-item">
+      <div class="trouble-rank">3<span>位</span></div>
+      <div class="trouble-content">
+        <h3>ドロップの迫力が出ない</h3>
+        <p class="trouble-quote">「ドロップが弱い。盛り上がりが伝わらない。」</p>
+        <p class="trouble-step">→ STEP3「ドラム構築」＋STEP6「FX」で解決</p>
+      </div>
+    </div>
+
+  </div>
+  <p class="pain-bridge">これ全部、<strong>ロードマップで一撃解決できます。</strong></p>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== STEPS ===== -->
+<section class="reveal">
+  <div class="section-label">THE ROADMAP</div>
+  <h2>完成までの<em>10 STEP</em></h2>
+
+  <p style="margin-bottom:40px;">楽曲制作の最初からリリースまでを10のSTEPに分解。<br>各STEPは3〜5記事、合計<strong>30記事超</strong>。<br>1記事＝1タスクなので「今日はここだけ」で迷わず進められる。</p>
+
+  <div class="note-carousel-wrap">
+    <p style="font-size:11px; color:var(--muted); letter-spacing:0.08em; text-align:center; margin-bottom:16px;">— 実際の記事イメージ（スワイプで確認） —</p>
+    <div class="note-carousel-track" id="noteTrack">
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-1.png" alt="STEP1"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 01</p>
+          <p class="note-carousel-title">レファレンス分析｜目指す曲を決める</p>
+          <p class="note-carousel-desc">ゴールが決まれば判断基準が生まれる。最初の一歩がすべてを変える。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-2.png" alt="STEP2"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 02</p>
+          <p class="note-carousel-title">ローエンド設計｜楽曲の土台を作る</p>
+          <p class="note-carousel-desc">キックとベースで曲の骨格を構築。プロの低域が強い理由はここにある。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-3.png" alt="STEP3"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 03</p>
+          <p class="note-carousel-title">ドラム構築｜グルーブを作る</p>
+          <p class="note-carousel-desc">グルーブは感覚ではなく設計。Volume目安から打ち込みのパターンまで解説。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-4.png" alt="STEP4"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 04</p>
+          <p class="note-carousel-title">ボーカル処理｜曲に馴染ませる</p>
+          <p class="note-carousel-desc">ジャンルに合うボーカルの選び方を伝授。海外プロのボーカル処理を徹底解説。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-5.png" alt="STEP5"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 05</p>
+          <p class="note-carousel-title">メロディ制作｜主役を作る</p>
+          <p class="note-carousel-desc">シンセ選び・音作り・プリセット活用まで。楽曲の主役を設計する。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-6.png" alt="STEP6"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 06</p>
+          <p class="note-carousel-title">FX・アンビエンス｜展開と空気感</p>
+          <p class="note-carousel-desc">リスナーを引き込む空間演出。8小節ループを「曲」に変える鍵。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-7.png" alt="STEP7"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 07</p>
+          <p class="note-carousel-title">アレンジ構成｜曲を展開する</p>
+          <p class="note-carousel-desc">フック→ビルドアップ→ドロップ→ブレイク。7セクション構造で展開迷子を解消。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-8.png" alt="STEP8"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 08</p>
+          <p class="note-carousel-title">ミキシング｜全体を整える</p>
+          <p class="note-carousel-desc">EQ・コンプ・パンニング設計術。「耳で判断しろ」の壁をやさしく説明。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-9.png" alt="STEP9"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 09</p>
+          <p class="note-carousel-title">マスタリング｜仕上げる</p>
+          <p class="note-carousel-desc">音圧と質感の最終調整。モコモコ解消から書き出しまで。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item">
+        <div class="note-carousel-thumb"><img src="note-screenshot-10.png" alt="STEP10"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label">STEP 10</p>
+          <p class="note-carousel-title">配信申請｜リリース準備</p>
+          <p class="note-carousel-desc">Apple Music・Spotifyへの配信申請まで完全サポート。完成を「作品」に変える。</p>
+        </div>
+      </div>
+      <div class="note-carousel-item" style="border-color: rgba(0,200,255,0.4);">
+        <div class="note-carousel-thumb"><img src="note-screenshot-bonus.png" alt="BONUS"></div>
+        <div class="note-carousel-body">
+          <p class="note-carousel-label" style="color: var(--accent2);">BONUS</p>
+          <p class="note-carousel-title">購入者全員の質問に動画で解説。全員に共有されます。</p>
+        </div>
+      </div>
+    </div>
+    <div class="note-carousel-arrows">
+      <button class="note-carousel-btn" id="notePrev">&#8592;</button>
+      <button class="note-carousel-btn" id="noteNext">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== INSIDE ===== -->
+<section class="reveal">
+  <div class="section-label">WHAT'S INSIDE</div>
+  <h2>ロードマップの<em>全体像</em></h2>
+
+  <div class="inside-grid">
+    <div class="inside-item">
+      <span class="inside-icon">📐</span>
+      <h3>完全非公開 STEP記事 全30本超</h3>
+      <p>1記事＝1タスク。「今日はここだけ」で進められる。</p>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🎬</span>
+      <h3>動画・図表つき解説</h3>
+      <p>文字だけでなく視覚的に理解。判断のプロセスが「見える」。</p>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🎵</span>
+      <h3>リリース楽曲で実例解説</h3>
+      <p>「Prayer」（2ndアルバム収録）を実例に、<br>考え方・手順・プラグイン選びまで超具体的に公開。</p>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">💬</span>
+      <h3>3ヶ月間・無制限LINEサポート</h3>
+      <p>質問・楽曲フィードバック・判断相談を3ヶ月間・回数無制限で対応。返信は原則24時間以内。</p>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🔄</span>
+      <h3>買い切り・追加費用ゼロ</h3>
+      <p>購入後も随時アップデート。新しい内容が追加されても追加費用は一切かからない。</p>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🛡️</span>
+      <h3>7日間返金保証</h3>
+      <p>内容が合わないと感じたら7日以内に申請で全額返金。<br>納得して進んでほしいから。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== WHO ===== -->
+<section class="reveal">
+  <div class="section-label">SOLUTION</div>
+  <h2>私がすべて<em>直接教えます</em></h2>
+
+  <div class="profile-box">
+    <p class="profile-name">TRICERA TECHNO</p>
+    <p class="profile-role">DTM解説恐竜 ｜ Melodic Techno Producer</p>
+    <img src="tricera-icon.jpg" alt="TRICERA TECHNO" style="width:120px; height:120px; border-radius:50%; object-fit:cover; object-position:top center; margin:20px auto 24px; display:block; border:3px solid var(--accent); box-shadow:0 0 20px rgba(0,200,255,0.3);">
+    <p>音楽経験ゼロ・楽譜も読めない状態からDTMをスタート。2年間1曲も完成できなかったが、「作る順番を決めた瞬間」に制作が変わり、たった2ヶ月で1stシングルを完成・セルフリリース。<br><br>現在はMelodic Technoプロデューサーとして活動しながら、noteで初心者〜中級者向けにDTMノウハウを発信。<strong>100件以上の読者からのリアルな制作相談</strong>に答えてきた実績をもとに、このロードマップを開発。</p>
+    <div style="margin: 28px 0;">
+      <p style="font-size:11px; color:var(--muted); letter-spacing:0.08em; text-align:center; margin-bottom:16px;">— リリース済み作品 —</p>
+      <div style="display:flex; gap:14px; justify-content:center;">
+        <a href="https://music.apple.com/jp/album/no-worries-at-all-ep/1829270683" target="_blank" rel="noopener" style="text-decoration:none; flex:1; max-width:180px; background:#111; border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s; display:block;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="jacket_001.png" alt="No Worries At All - EP" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+          <div style="padding:10px 12px 12px;">
+            <p style="font-size:11px; color:var(--accent); font-family:'Bebas Neue',sans-serif; letter-spacing:0.08em; margin:0 0 4px;">EP · 2025</p>
+            <p style="font-size:12px; color:var(--white); margin:0; line-height:1.4;">No Worries At All</p>
+            <p style="font-size:10px; color:var(--muted); margin:6px 0 0; display:flex; align-items:center; gap:4px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="color:#fc3c44;flex-shrink:0"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 17.5l-7-4V7l7 4v6.5z"/></svg>
+              Apple Musicで聴く
+            </p>
+          </div>
+        </a>
+        <a href="https://music.apple.com/jp/album/dream-within-a-dream-ep/1850867216" target="_blank" rel="noopener" style="text-decoration:none; flex:1; max-width:180px; background:#111; border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s; display:block;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="jacket_002.png" alt="Dream Within A Dream - EP" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+          <div style="padding:10px 12px 12px;">
+            <p style="font-size:11px; color:var(--accent); font-family:'Bebas Neue',sans-serif; letter-spacing:0.08em; margin:0 0 4px;">EP · 2025</p>
+            <p style="font-size:12px; color:var(--white); margin:0; line-height:1.4;">Dream Within A Dream</p>
+            <p style="font-size:10px; color:var(--muted); margin:6px 0 0; display:flex; align-items:center; gap:4px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="color:#fc3c44;flex-shrink:0"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 17.5l-7-4V7l7 4v6.5z"/></svg>
+              Apple Musicで聴く
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="profile-stats">
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">リリース済みアルバム</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">制作相談対応実績</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1500+</span>
+        <span class="stat-label">総フォロワー数</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">note記事数</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== SUPPORT ===== -->
+<section class="reveal">
+  <div class="section-label">NARROW</div>
+  <h2>迷ったら<em>すぐ質問</em><br>3ヶ月サポート付き</h2>
+  <p>教材を買って、読んで終わり——そんな経験ありませんか？<br>
+  私は初心者のころ、海外の英語PDF教材を買ったが質問できず、買っただけで終わりました。<br><strong>気軽に聞ける人がいれば、2年の遠回りはなかった。</strong>その後悔がこのサポートの原点です。</p>
+
+  <div class="support-box">
+    <ul class="support-list">
+      <li>ロードマップの各STEPに関する質問（回数無制限）</li>
+      <li>制作途中の楽曲へのリアルなフィードバック</li>
+      <li>「ここで進んでいい？」という判断相談に明確に答える</li>
+      <li>アレンジ・構成・音選び・バランスの方向性確認</li>
+      <li>すでに制作中の楽曲の持ち込みもOK</li>
+      <li>途中で完全に止まっていてもOK・いつ再開してもOK</li>
+      <li>返信は原則24時間以内、最長でも48時間以内</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== PRICE ===== -->
+<div class="price-section">
+  <div class="price-bg"></div>
+  <div class="reveal">
+    <div class="section-label" style="justify-content:center; margin-bottom:16px;">PRICING</div>
+    <h2 style="text-align:center;">今すぐ<em>始める</em></h2>
+    <div class="price-cards">
+
+      <div class="price-card price-card--featured">
+        <span class="price-card-badge">MOST POPULAR</span>
+        <div class="price-card-img">
+          <img src="mockup-pro.png" alt="ロードマップPROコース">
+        </div>
+        <p class="price-card-name">ロードマップPROコース<br>+ 3ヶ月サポート</p>
+        <div class="price-card-amount">¥19,800</div>
+        <p class="price-card-tax">税込・買い切り・追加費用なし</p>
+        <ul class="price-checklist">
+          <li>STEP1〜10 全30記事超</li>
+          <li>動画・図表つき解説</li>
+          <li>リリース楽曲での実例公開</li>
+          <li>3ヶ月間・無制限LINEサポート</li>
+          <li>随時アップデート（追加費用ゼロ）</li>
+          <li>7日間返金保証</li>
+        </ul>
+        <a href="https://buy.stripe.com/dRm28k9R3f9afIHbqPgEg01" target="_blank" class="buy-btn">今すぐ購入する →</a>
+        <p style="margin-top:12px; font-size:11px; color:var(--muted); text-align:center; letter-spacing:0.05em;">Stripeの安全な決済ページへ移動します</p>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-badge" style="visibility:hidden;">MOST POPULAR</span>
+        <div class="price-card-img">
+          <img src="mockup.png" alt="ロードマップPROコース">
+        </div>
+        <p class="price-card-name">ロードマップPROコース<br>（サポートなし）</p>
+        <div class="price-card-amount">¥9,800</div>
+        <p class="price-card-tax">税込・買い切り・追加費用なし</p>
+        <ul class="price-checklist">
+          <li>STEP1〜10 全30記事超</li>
+          <li>動画・図表つき解説</li>
+          <li>リリース楽曲での実例公開</li>
+          <li>随時アップデート（追加費用ゼロ）</li>
+          <li>7日間返金保証</li>
+        </ul>
+        <a href="https://buy.stripe.com/14AeV6bZbe561RR1QfgEg03" target="_blank" class="buy-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:var(--white);">購入する →</a>
+        <p style="margin-top:12px; font-size:11px; color:var(--muted); text-align:center; letter-spacing:0.05em;">Stripeの安全な決済ページへ移動します</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reveal">
+  <div class="section-label">REVIEWS</div>
+  <h2>購入者の<em>リアルな声</em></h2>
+  <p>ロードマップ1.0の3ヶ月サポート終了後、購入者にアンケートを実施。<br>全員が<strong>制作に取り組む時間が増えた</strong>と回答。それぞれの変化をそのまま紹介します。</p>
+
+  <div class="review-stats">
+    <div class="review-stat-item">
+      <span class="review-stat-num">4<span class="review-stat-unit">/4</span></span>
+      <span class="review-stat-label">ロードマップ役立ち度（購入者全員）</span>
+    </div>
+    <div class="review-stat-item">
+      <span class="review-stat-num">4.7<span class="review-stat-unit">/5</span></span>
+      <span class="review-stat-label">友人へのおすすめ度（平均）</span>
+    </div>
+    <div class="review-stat-item">
+      <span class="review-stat-num">100<span class="review-stat-unit">%</span></span>
+      <span class="review-stat-label">楽曲構造の理解度が向上</span>
+    </div>
+    <div class="review-stat-item">
+      <span class="review-stat-num">100<span class="review-stat-unit">%</span></span>
+      <span class="review-stat-label">制作時間が増えたと回答</span>
+    </div>
+  </div>
+
+  <div class="review-list">
+
+    <div class="review-card review-card--featured">
+      <div class="review-header">
+        <div class="review-avatar" style="background:none; border:none; padding:0;"><img src="ジジさんアイコン.jpg" alt="ジジさん" style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:block;"></div>
+        <div>
+          <p class="review-name">ジジさん</p>
+          <p class="review-meta">DTM歴1年未満 ・ FL Studio</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <div class="review-badge">STEP 1〜10 完走</div>
+      </div>
+      <p class="review-body">「DTM初心者の私は右も左も分かってませんでした。トリケラさんのロードマップと出会えて、まず何をするのか、曲を最後まで作り上げるには何が必要なのかを教えてもらいました。<strong>トリケラさんはDTMの先生でもあり、優秀なモチベーターでもあった</strong>。挫折しそうな時もトリケラさんの言葉を思い出すとがんばれました。」</p>
+      <div class="review-footer">
+        <span class="review-tag">一言：DTMの教科書</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:none; border:none; padding:0;"><img src="nob-icon.png" alt="Nobさん" style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:block;"></div>
+        <div>
+          <p class="review-name">Nobさん</p>
+          <p class="review-meta">DTM歴1年未満 ・ Ableton Live</p>
+          <div class="review-stars">★★★★☆</div>
+        </div>
+        <div class="review-badge review-badge--progress">進行中</div>
+      </div>
+      <p class="review-body">「レファレンス曲をベースに、ステップアップ方式で楽曲完成までを細かく学ぶことができたので、今後は自分一人でも曲を完成させられるという<strong>『自信』が手に入った</strong>。チュートリアル等を理解して活用できるだけのベースが自分の中にできた。」</p>
+      <div class="review-footer">
+        <span class="review-tag">一言：自分もプロレベルに近い曲が作れるという自信を手にできる最短ルート</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:none; border:none; padding:0;"><img src="usada-icon.png" alt="うさださん" style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:block;"></div>
+        <div>
+          <p class="review-name">うさださん</p>
+          <p class="review-meta">DTM歴1年未満 ・ Bitwig Studio</p>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <div class="review-badge review-badge--progress">進行中</div>
+      </div>
+      <p class="review-body">「不明な点を解消し<strong>一歩ずつ進めることができた</strong>。一曲をリリースできるまで引き続きお願いしたい。」</p>
+      <div class="review-footer">
+        <span class="review-tag">一言：最初の一曲を作り上げるまでの指針</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== FAQ ===== -->
+<section class="reveal">
+  <div class="section-label">FAQ</div>
+  <h2>よくある<em>質問</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">初心者でも大丈夫ですか？</div>
+      <div class="faq-a">はい、大丈夫です。DAWで再生・停止と、音を並べることができればOKです。解説動画を見ながらマネするだけで、1曲を完成させられる構成になっています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">忙しくて時間が取れなくても大丈夫ですか？</div>
+      <div class="faq-a">問題ありません。想定しているのは「平日30分〜1時間・毎日でなくてもOK」という現実的なペース。1記事＝1タスクの設計で、止まっても戻れる構造になっています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">使用するDAWは何ですか？</div>
+      <div class="faq-a">解説はAbleton Live使用。Studio Oneでの制作経験もあり、FL Studio・Logic Pro・Cubase・Bitwigでの相談実績もあります。操作説明ではなく「順番と判断基準」の解説なので、どのDAWでも問題なく進められます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">高価なプラグインは必要ですか？</div>
+      <div class="faq-a">必要ありません。基本はDAW付属プラグインと無料の定番プラグインで進めます。重視するのは音選び・役割・なじませ方といった判断基準です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">どのジャンルが対象ですか？</div>
+      <div class="faq-a">ダンスミュージック向けです（ハウス・テクノ・ダブステップ・トラップ・ドラムンベースなど）。メロディックテクノを例に、ジャンル共通の制作構造と判断基準を解説します。ロック・J-POP・K-POPを主軸にした制作には向いていません。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p style="margin-bottom:16px; font-family:'Bebas Neue', sans-serif; font-size:20px; letter-spacing:0.1em; color:var(--text);">TRICERA TECHNO</p>
+  <p style="margin-bottom:16px;">DTM解説恐竜｜Melodic Techno Producer</p>
+  <p style="margin-bottom:4px; font-size:13px; color:var(--muted);">お問い合わせはこちらからお願いします。</p>
+  <p><a href="mailto:triceratechno@gmail.com" style="color:var(--accent); text-decoration:none;">triceratechno@gmail.com</a></p>
+  <p style="margin-top:32px; font-size:11px;">© 2026 TRICERA TECHNO. All rights reserved.</p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Note carousel
+  const track = document.getElementById('noteTrack');
+  const itemWidth = () => track.querySelector('.note-carousel-item').offsetWidth + 16;
+  document.getElementById('noteNext').addEventListener('click', () => {
+    track.scrollBy({ left: itemWidth(), behavior: 'smooth' });
+  });
+  document.getElementById('notePrev').addEventListener('click', () => {
+    track.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
+  });
+  let isDragging = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.classList.add('grabbing'); });
+  track.addEventListener('mouseleave', () => { isDragging = false; track.classList.remove('grabbing'); });
+  track.addEventListener('mouseup', () => { isDragging = false; track.classList.remove('grabbing'); });
+  track.addEventListener('mousemove', e => { if (!isDragging) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
