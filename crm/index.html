@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦖 トリケラテクノ CRM</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1419;
+    --bg-elev: #1a2028;
+    --bg-card: #232b35;
+    --border: #2d3744;
+    --text: #e6e9ec;
+    --text-dim: #9aa3ad;
+    --accent: #4ec9b0;
+    --p0: #ff6b6b;
+    --p2: #ffd93d;
+    --p3: #6c757d;
+    --status-active: #4ade80;
+    --status-paid: #38bdf8;
+    --status-free: #a78bfa;
+    --status-waiting: #fbbf24;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  h1 { font-size: 28px; }
+  h1 .emoji { font-size: 32px; }
+  .meta { color: var(--text-dim); font-size: 14px; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+  .stat-value { font-size: 28px; font-weight: 700; }
+  .stat-value.urgent { color: var(--p0); }
+  .stat-value.warn { color: var(--p2); }
+  .stat-value.ok { color: var(--status-active); }
+
+  .alert-banner {
+    background: linear-gradient(135deg, #2d1f1f, #3d2525);
+    border-left: 4px solid var(--p0);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .alert-banner h3 { color: var(--p0); margin-bottom: 8px; }
+  .alert-banner ul { list-style: none; padding-left: 0; }
+  .alert-banner li { padding: 4px 0; }
+  .alert-banner li::before { content: "▸ "; color: var(--p0); font-weight: 700; }
+
+  .name-warning {
+    background: #2d2618;
+    border: 1px dashed var(--p2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .name-warning strong { color: var(--p2); }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--accent); }
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .card[data-priority="P0"] { border-top: 3px solid var(--p0); }
+  .card[data-priority="P2"] { border-top: 3px solid var(--p2); }
+  .card[data-priority="P3"] { border-top: 3px solid var(--p3); }
+
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .card-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .card-name .real { color: var(--text-dim); font-size: 13px; font-weight: 400; }
+  .priority-badge {
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .priority-badge.P0 { background: rgba(255,107,107,0.15); color: var(--p0); }
+  .priority-badge.P2 { background: rgba(255,217,61,0.15); color: var(--p2); }
+  .priority-badge.P3 { background: rgba(108,117,125,0.2); color: var(--p3); }
+
+  .card-status {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .card-status.active { background: rgba(74,222,128,0.15); color: var(--status-active); }
+  .card-status.paid { background: rgba(56,189,248,0.15); color: var(--status-paid); }
+  .card-status.free { background: rgba(167,139,250,0.15); color: var(--status-free); }
+  .card-status.waiting { background: rgba(251,191,36,0.15); color: var(--status-waiting); }
+
+  .card-row {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    padding: 4px 0;
+    color: var(--text-dim);
+  }
+  .card-row .label { width: 70px; flex-shrink: 0; }
+  .card-row .value { color: var(--text); }
+
+  .card-action {
+    background: rgba(78,201,176,0.08);
+    border: 1px solid rgba(78,201,176,0.2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .card-action .label {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .card-action .due { color: var(--p0); font-weight: 600; font-size: 12px; margin-top: 4px; }
+
+  .card-warning {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--p2);
+    padding: 4px 8px;
+    background: rgba(255,217,61,0.08);
+    border-radius: 4px;
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  .modal-backdrop.show { display: flex; }
+  .modal {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal h2 { margin-bottom: 16px; }
+  .modal h3 { margin-top: 20px; margin-bottom: 8px; color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;}
+  .modal-close {
+    float: right;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .modal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  .modal th, .modal td {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal th { color: var(--text-dim); font-weight: 500; width: 30%; }
+  .modal pre {
+    background: var(--bg);
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .modal ul, .modal ol { margin-left: 20px; margin-top: 8px; }
+  .modal li { padding: 2px 0; }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .btn:hover { opacity: 0.9; }
+  .btn.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .help-box {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 24px;
+  }
+  .help-box h2 { margin-bottom: 12px; font-size: 16px; }
+  .cmd-list { display: grid; grid-template-columns: 1fr 2fr; gap: 8px 16px; font-size: 13px; }
+  .cmd-list .cmd-purpose { color: var(--text-dim); }
+  .cmd-list code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 12px;
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    h1 { font-size: 22px; }
+    .grid { grid-template-columns: 1fr; }
+    .modal { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <h1><span class="emoji">🦖</span> トリケラテクノ CRM</h1>
+    <div class="meta">DTM解説恐竜・顧客管理ダッシュボード</div>
+  </div>
+  <div class="meta">
+    最終更新：<span id="last-updated"></span><br>
+    顧客数：<strong id="customer-count"></strong>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-label">今日のタスク</div>
+    <div class="stat-value urgent" id="stat-today">2</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">今週のタスク</div>
+    <div class="stat-value warn" id="stat-week">3</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">成約済み</div>
+    <div class="stat-value ok" id="stat-paid">1</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">無料相談・サポート</div>
+    <div class="stat-value" id="stat-free">2</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">制作進行中</div>
+    <div class="stat-value ok" id="stat-active">1</div>
+  </div>
+</div>
+
+<div class="alert-banner" id="urgent-banner">
+  <h3>🔴 今日中にやること（2026-05-03）</h3>
+  <ul>
+    <li><strong>Minoru</strong> — エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート） ／ ⚠️ ギガファイル便MIDIの保存期限：5/8まで</li>
+    <li><strong>DAIKI</strong> — Stripe入金確認 → 確認できたらロードマップアップグレード版を即日送付</li>
+  </ul>
+</div>
+
+<div class="name-warning">
+  ⚠️ <strong>名前の混同注意</strong>：「Dさん」= <strong>hirokazoo</strong>（PsyTrance / Bitwig / 無料相談中） ≠ <strong>DAIKI（DAn）</strong>（Techno / DJ / 成約済み）。返信前に必ず連絡手段・ジャンル・ステータスの3点で照合すること。
+</div>
+
+<div class="actions">
+  <button class="btn" onclick="alert('Claude Codeに「新しい顧客（名前・連絡履歴・LINEスクショなど）を crm/customers に追加して」と指示してください。テンプレ：crm/templates/new-customer.md');">＋ 新規顧客を追加</button>
+  <button class="btn secondary" onclick="alert('Claude Codeに「DASHBOARD・SCHEDULE・index.html を最新の customers/*.md に同期して」と指示してください。');">🔄 ダッシュボード再同期</button>
+  <button class="btn secondary" onclick="window.open('DASHBOARD.md', '_blank');">📋 DASHBOARD.md</button>
+  <button class="btn secondary" onclick="window.open('SCHEDULE.md', '_blank');">📅 SCHEDULE.md</button>
+  <button class="btn secondary" onclick="window.open('PLAYBOOK.md', '_blank');">📖 PLAYBOOK.md</button>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-filter="all">すべて</button>
+  <button class="filter-btn" data-filter="P0">🔴 P0（最優先）</button>
+  <button class="filter-btn" data-filter="P2">🟡 P2（中）</button>
+  <button class="filter-btn" data-filter="active">🟢 アクティブ</button>
+  <button class="filter-btn" data-filter="paid">🟢 成約済み</button>
+  <button class="filter-btn" data-filter="free">🔵 無料段階</button>
+  <button class="filter-btn" data-filter="waiting">🟡 待ち</button>
+</div>
+
+<div class="grid" id="customer-grid"></div>
+
+<div class="help-box">
+  <h2>💬 Claude Codeへの指示の出し方</h2>
+  <div class="cmd-list">
+    <div class="cmd-purpose">返信案を作る</div>
+    <div><code>「Minoruさんからこんなメッセージ来た（貼り付け）。返信を作って」</code></div>
+    <div class="cmd-purpose">データを更新</div>
+    <div><code>「ここまでのやり取りを送るので、Minoruさんのファイル更新して」</code></div>
+    <div class="cmd-purpose">楽曲FBを作る</div>
+    <div><code>「この楽曲を分析してFBレポートを作って。アンケート回答も踏まえて」</code></div>
+    <div class="cmd-purpose">新規顧客追加</div>
+    <div><code>「新しい顧客のLINE履歴を送るので crm/customers に追加して」</code></div>
+    <div class="cmd-purpose">戦略を考える</div>
+    <div><code>「Minoruさんへの次の一手を考えて」</code></div>
+    <div class="cmd-purpose">この一覧を更新</div>
+    <div><code>「index.html を最新の customers に同期して」</code></div>
+  </div>
+</div>
+
+<footer>
+  TriceraTechno CRM ／ 引き継ぎ元：TriceraTechno_CRM_Code引き継ぎ_v2.docx ／ Claude Codeで運用
+</footer>
+
+</div>
+
+<div class="modal-backdrop" id="modal" onclick="if(event.target.id==='modal')closeModal()">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+const customers = [
+  {
+    id: "minoru",
+    name: "Minoruさん",
+    real: "Y K. / Discord: mino",
+    priority: "P0",
+    statusKey: "active",
+    status: "🟢 制作進行中",
+    plan: "スタンダードコース",
+    planPrice: "¥9,800",
+    nextAction: "エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート）",
+    nextDue: "2026-05-03（今日）",
+    contact: "Discord / メール",
+    daw: "Cubase（DTM歴2年）",
+    genre: "ジブリ系×スイング×ダンス×昭和歌謡×EDM",
+    warning: "ギガファイル便MIDIの保存期限：5/8まで（5/1受領+7日）",
+    detail: {
+      "基本情報": [
+        ["メール", "a.motherleaf@gmail.com"],
+        ["Discord", "mino（専用チャンネル参加済み）"],
+        ["SoundCloud", "kazeminoru22"],
+        ["DAW", "Cubase / 2年（独学）"],
+        ["参考アーティスト", "ラビットまろ / Mari Iijima"]
+      ],
+      "契約情報": [
+        ["プラン", "スタンダードコース ¥9,800"],
+        ["入金日", "2026-04-22（Stripe）"],
+        ["制作開始", "2026-04-23"],
+        ["初期納品目安", "2026-05-03（今日）"],
+        ["修正残り", "2回"],
+        ["指導期間", "〜2026-05-17（Discord使用）"],
+        ["返金保証", "納品48時間以内申請で全額返金"]
+      ]
+    },
+    sections: [
+      {
+        title: "楽曲「エオリアン」— 技術分析",
+        type: "table",
+        headers: ["指標", "値", "評価"],
+        rows: [
+          ["BPM", "120", "ダンス系に最適"],
+          ["Key", "D# / Eb", "—"],
+          ["RMS", "-13.1 dB", "MM後に上げる余地あり"],
+          ["Sub Bass(20-60Hz)", "2.4%", "少ない → 体への響きが弱い"],
+          ["Low Mid(250-500Hz)", "42.9%", "多すぎ → シンセ・ベースが被ってる"],
+          ["High Mid(2k-6kHz)", "2.1%", "薄い → 抜け感が弱い"],
+          ["トランジェント", "7.8x", "アタック感の土台は十分"]
+        ]
+      },
+      {
+        title: "制作リクエスト（アンケート回答）",
+        type: "list",
+        items: [
+          "間奏部のダンス感強化 — キック/ベースにサチュレーション10%・ハイハットベロシティ強弱",
+          "Clap/Snap追加 — Snap:L40 / Clap:R30のパン振り・8分オフビート配置・ルームリバーブ少量",
+          "ベースアレンジ — スイング部:ウォーキングベース / 間奏四つ打ち:シンセベースのルート刻み",
+          "リバースFX — シンセ複製→リバーブ→反転→歌頭0.5〜1秒前に配置",
+          "シンセEQ — 250〜350HzをカットしてベースとEQ分離",
+          "※ ドラム音色はMM業者に依頼予定のため対象外"
+        ]
+      },
+      {
+        title: "MIDIデータ受領状況（2026-05-01）",
+        type: "list",
+        items: [
+          "⚠️ ギガファイル便の保存期限は7日！必ず期限内にダウンロードすること",
+          "内容：リズムパートを抜いたオーディオ・ドラムMIDI・ClapMIDI 計4点",
+          "48kHz・24bit / テンポ120 / 16分三連符",
+          "始まりと終わりにもClap/Snapを追加したいとMinoruさん自身の判断あり"
+        ]
+      },
+      {
+        title: "アップセルシナリオ",
+        type: "table",
+        headers: ["ステップ", "内容", "金額"],
+        rows: [
+          ["現在", "スタンダードコース 制作進行中", "¥9,800"],
+          ["Step 1", "プロコース（ミックス・マスタリング込み）", "¥19,800"],
+          ["Step 2", "マスターコース（フル制作・3ヶ月指導）", "¥49,800"],
+          ["累計最大", "継続依頼込み", "¥79,400〜"]
+        ]
+      }
+    ],
+    file: "customers/minoru.md"
+  },
+  {
+    id: "daiki",
+    name: "DAIKIさん",
+    real: "DAn（大阪）",
+    priority: "P0",
+    statusKey: "paid",
+    status: "🟢 成約済み（入金確認待ち）",
+    plan: "週1コンサル＋ロードマップ＋3ヶ月",
+    planPrice: "¥29,600",
+    nextAction: "Stripe入金確認 → ロードマップアップグレード版送付",
+    nextDue: "入金後即日",
+    contact: "Discord（DAn）",
+    daw: "未開始（機材は揃ってる）",
+    genre: "Techno / Tech House",
+    warning: "「Dさん」= hirokazooさんではない！DAIKIさんとは別人",
+    detail: {
+      "基本情報": [
+        ["居住地", "大阪"],
+        ["職業", "コンテンツ販売（10年のキャリア）"],
+        ["活動", "DJ（現場歴あり）"],
+        ["DTM歴", "0（これから）"],
+        ["ジャンル", "Techno / Tech House"],
+        ["参考アーティスト", "John Summit / Vintage Culture"],
+        ["強み", "DJとして現場の耳・音の良し悪しの判断力"]
+      ],
+      "契約情報": [
+        ["プラン", "週1個別コンサル＋ロードマップ＋3ヶ月サポートコース"],
+        ["金額", "¥29,600（¥9,800＋¥19,800）"],
+        ["決済", "Stripe"],
+        ["備考", "図解・動画増やしたアップグレード版ロードマップを渡す"],
+        ["開始予定", "5/8以降（DAIKIさんのスケジュール次第）"]
+      ]
+    },
+    sections: [
+      {
+        title: "面談記録（2026-05-02 18:00〜18:30）",
+        type: "list",
+        items: [
+          "John Summit・Vintage Cultureの話で方向性が完全に一致",
+          "「キックとベースが命」という認識あり。現状キックのボディが弱いと自己分析",
+          "キックニンジャ購入済みだが使い方未習得",
+          "コンテンツ販売10年の知見をセッション内で交換予定",
+          "「お人柄にも触れ合えて良かったです」と非常に良い印象を持ってもらえた"
+        ]
+      },
+      {
+        title: "継続FB課題（キック強化）",
+        type: "list",
+        items: [
+          "① サンプル変更 — サイトランスはボディ（60〜200Hz）が命。キックニンジャでボディ重視のプリセットを探す",
+          "② サチュレーション10% — 倍音を増やして音量を上げずに存在感を出す",
+          "③ ダッキング — ボーカル・メロディにダッキングをかけてキックを前に出す"
+        ]
+      },
+      {
+        title: "リンク",
+        type: "links",
+        items: [
+          ["Stripe決済リンク", "https://buy.stripe.com/9B6cMY1kx4uwflHdyXgEg04"],
+          ["ロードマップ確認LP（1.0）", "https://note.com/triceratechno/n/n1691164f0ef9"]
+        ]
+      },
+      {
+        title: "LTVシナリオ",
+        type: "table",
+        headers: ["ステップ", "内容", "金額"],
+        rows: [
+          ["現在", "週1コンサル＋ロードマップ＋3ヶ月（成約済み）", "¥29,600"],
+          ["Step 1", "2クール目継続", "¥29,600〜"],
+          ["累計", "6ヶ月継続の場合", "¥59,200〜"]
+        ]
+      }
+    ],
+    file: "customers/daiki.md"
+  },
+  {
+    id: "tatsuyan",
+    name: "TatsuyaNさん",
+    real: "初期からのサポーター",
+    priority: "P0",
+    statusKey: "waiting",
+    status: "🟡 ロードマップ購入済み・FB待ち",
+    plan: "DTMロードマップ（有料note）",
+    planPrice: "—",
+    nextAction: "Dropbox音源を聴いて第一回FBを送付（約束済み）",
+    nextDue: "週末まで",
+    contact: "LINE",
+    daw: "Ableton Live 12",
+    genre: "歌モノ・メロディが映える曲（ビートジャンル未定）",
+    warning: "「週末までにFB」と約束済み。守ること！",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Ableton Live 12"],
+        ["ジャンル", "歌モノ・メロディが映える曲"],
+        ["素材", "ボーカル・ピアノ録音済み"],
+        ["関係性", "初期からのサポーター（いいね・コメント・投げ銭あり）← 最重要"],
+        ["購入物", "DTMロードマップ（有料note）"],
+        ["現状", "骨組みができてきた段階。Dropboxで音源＋テキストメモ送付済み"],
+        ["送付ファイル", "TatsuyaN_submission.zip"]
+      ]
+    },
+    sections: [
+      {
+        title: "次のアクション",
+        type: "list",
+        items: [
+          "Dropbox音源（TatsuyaN_submission.zip）を聴いてFBを作成",
+          "週末までに送付（約束遵守）",
+          "FB後に個別サポートプラン（スタンダードコース）を自然に提案",
+          "「Drop/Hookの構造理解」と「2日に1回DAW起動習慣」はすでに確立済み — 背中を押すだけ"
+        ]
+      }
+    ],
+    file: "customers/tatsuyan.md"
+  },
+  {
+    id: "natsuki",
+    name: "なつきさん",
+    real: "長野大樹",
+    priority: "P2",
+    statusKey: "free",
+    status: "🔵 無料サポート中・有料化タイミング",
+    plan: "無料",
+    planPrice: "—",
+    nextAction: "「1曲完成おめでとう」返信→スタンダードコース提案",
+    nextDue: "今週中",
+    contact: "LINE",
+    daw: "GarageBand（DTM歴1年弱）",
+    genre: "Frenchcore / Speedcore（参考：かめりあ）",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DTM歴", "1年弱"],
+        ["DAW", "GarageBand"],
+        ["ジャンル", "Frenchcore / Speedcore"],
+        ["参考アーティスト", "かめりあ"],
+        ["現状", "1曲完成済み。サビの迫力が今年最大の悩み（未解決）"]
+      ]
+    },
+    sections: [
+      {
+        title: "これまでのFB記録",
+        type: "list",
+        items: [
+          "① ドロップ迫力 — 「ドロップ以外を痩せさせる」という引き算の設計を指導",
+          "② リードがオケに馴染まない — フェーダーで-2〜-3dB下げるだけで解決（即効果あり）",
+          "③ Jazz→Hardstyle転換の圧問題 — 800Hz中域飽和と自己特定・自己解決",
+          "④ サビの迫力 — note記事へ誘導（未解決 → 有料サポートへの誘導チャンス）"
+        ]
+      },
+      {
+        title: "次のアクション",
+        type: "list",
+        items: [
+          "「1曲完成おめでとう＋チャンネル活動の確認」の返信待ち",
+          "返信が来たら「2曲目はどんな曲を作りたいですか？」→ スタンダードコース（¥9,800）提案"
+        ]
+      }
+    ],
+    file: "customers/natsuki.md"
+  },
+  {
+    id: "hirokazoo",
+    name: "hirokazooさん",
+    real: "Dさん（DAIKIさんとは別人！）",
+    priority: "P2",
+    statusKey: "free",
+    status: "🔵 無料相談中・段階的FB継続",
+    plan: "無料",
+    planPrice: "—",
+    nextAction: "キックニンジャ改善結果が来たら次のFB（②サチュレーション10%）",
+    nextDue: "返信待ち",
+    contact: "LINE",
+    daw: "Bitwig Studio / Spire",
+    genre: "PsyTrance（Full On Trance）",
+    warning: "「Dさん」= この人。DAIKIさん（DAn / Techno / 成約済み）とは絶対に混同しない",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Bitwig Studio"],
+        ["使用シンセ", "Spire"],
+        ["ジャンル", "PsyTrance（Full On Trance）"],
+        ["参考アーティスト", "Astronomical Japan"],
+        ["制作スタイル", "邦楽（夜の踊り子など）をサイトランスにリミックス"],
+        ["主な悩み", "シンセリードの迫力・キックのボディが弱い"]
+      ]
+    },
+    sections: [
+      {
+        title: "本人確定の照合手順（混同防止）",
+        type: "list",
+        items: [
+          "LINEか？ → hirokazooさん",
+          "Discord（DAn名義）か？ → DAIKIさん",
+          "ジャンル PsyTrance / Bitwig → hirokazooさん",
+          "ジャンル Techno/Tech House / DJ → DAIKIさん"
+        ]
+      },
+      {
+        title: "これまでのFB記録",
+        type: "list",
+        items: [
+          "シンセリード — OTT 15%前後＋軽いサチュレーションで倍音を足す",
+          "キック強化 — サイトランスはボディ（60〜200Hz）が命。キックニンジャのプリセット選定を指導",
+          "楽曲構造 — ドラムフィルを2箇所に絞りキック+ベースを鳴らし続ける提案",
+          "EQ順番・キー（C#m）・音の詰め込み過ぎ問題を指摘済み"
+        ]
+      },
+      {
+        title: "段階的FBの進め方",
+        type: "list",
+        items: [
+          "① キックのプリセット選定（現在）",
+          "② サチュレーション10%",
+          "③ ダッキング",
+          "信頼関係が深まったタイミングでスタンダードコース提案"
+        ]
+      }
+    ],
+    file: "customers/hirokazoo.md"
+  }
+];
+
+const dataDate = "2026-05-03";
+document.getElementById("last-updated").textContent = dataDate;
+document.getElementById("customer-count").textContent = customers.length + "名";
+
+function renderCards(filter = "all") {
+  const grid = document.getElementById("customer-grid");
+  const filtered = customers.filter(c => {
+    if (filter === "all") return true;
+    if (filter === "P0" || filter === "P2" || filter === "P3") return c.priority === filter;
+    return c.statusKey === filter;
+  });
+  grid.innerHTML = filtered.map(c => `
+    <div class="card" data-priority="${c.priority}" onclick="openModal('${c.id}')">
+      <div class="card-head">
+        <div class="card-name">${c.name}<br><span class="real">${c.real}</span></div>
+        <span class="priority-badge ${c.priority}">${c.priority}</span>
+      </div>
+      <span class="card-status ${c.statusKey}">${c.status}</span>
+      <div class="card-row"><span class="label">プラン</span><span class="value">${c.plan} ${c.planPrice}</span></div>
+      <div class="card-row"><span class="label">連絡</span><span class="value">${c.contact}</span></div>
+      <div class="card-row"><span class="label">DAW</span><span class="value">${c.daw}</span></div>
+      <div class="card-row"><span class="label">ジャンル</span><span class="value">${c.genre}</span></div>
+      <div class="card-action">
+        <div class="label">📌 NEXT ACTION</div>
+        <div>${c.nextAction}</div>
+        <div class="due">期限：${c.nextDue}</div>
+      </div>
+      ${c.warning ? `<div class="card-warning">⚠️ ${c.warning}</div>` : ""}
+    </div>
+  `).join("");
+}
+
+function openModal(id) {
+  const c = customers.find(x => x.id === id);
+  if (!c) return;
+  const modal = document.getElementById("modal-content");
+  let html = `
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2>${c.name} <span style="color:var(--text-dim);font-size:14px;font-weight:400;">${c.real}</span></h2>
+    <div style="margin-bottom:16px;">
+      <span class="priority-badge ${c.priority}" style="margin-right:8px;">${c.priority}</span>
+      <span class="card-status ${c.statusKey}">${c.status}</span>
+    </div>
+    ${c.warning ? `<div class="card-warning" style="margin-bottom:16px;font-size:13px;">⚠️ ${c.warning}</div>` : ""}
+    <div class="card-action" style="margin-bottom:20px;">
+      <div class="label">📌 次のアクション</div>
+      <div>${c.nextAction}</div>
+      <div class="due">期限：${c.nextDue}</div>
+    </div>
+  `;
+
+  for (const [title, rows] of Object.entries(c.detail)) {
+    html += `<h3>${title}</h3><table>`;
+    for (const [k, v] of rows) html += `<tr><th>${k}</th><td>${v}</td></tr>`;
+    html += `</table>`;
+  }
+
+  for (const sec of (c.sections || [])) {
+    html += `<h3>${sec.title}</h3>`;
+    if (sec.type === "table") {
+      html += "<table><tr>" + sec.headers.map(h => `<th>${h}</th>`).join("") + "</tr>";
+      html += sec.rows.map(r => "<tr>" + r.map(v => `<td>${v}</td>`).join("") + "</tr>").join("");
+      html += "</table>";
+    } else if (sec.type === "list") {
+      html += "<ul>" + sec.items.map(i => `<li>${i}</li>`).join("") + "</ul>";
+    } else if (sec.type === "links") {
+      html += "<ul>" + sec.items.map(([t,u]) => `<li><a href="${u}" target="_blank" style="color:var(--accent);">${t}</a></li>`).join("") + "</ul>";
+    }
+  }
+
+  html += `<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+    <button class="btn secondary" onclick="window.open('${c.file}','_blank')">📄 ${c.file} を開く</button>
+    <button class="btn secondary" onclick="copyPrompt('${c.id}')">📋 Claudeへの依頼文をコピー</button>
+  </div>`;
+
+  modal.innerHTML = html;
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("show");
+}
+
+function copyPrompt(id) {
+  const c = customers.find(x => x.id === id);
+  const text = `${c.name}（${c.real}）のことで相談。現状：${c.status}。次のアクション：${c.nextAction}（期限：${c.nextDue}）。\n\n[ここにLINE/Discordのスクショやメッセージを貼り付け]\n\n返信案を作って。`;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("依頼文をクリップボードにコピーしました。Claude Codeに貼り付けてください。");
+  }, () => {
+    prompt("コピーに失敗しました。手動でコピーしてください：", text);
+  });
+}
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderCards(btn.dataset.filter);
+  });
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+renderCards();
+</script>
+</body>
+</html>
