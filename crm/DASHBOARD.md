@@ -5,13 +5,17 @@
 
 ## 顧客サマリー
 
+> ⬇️ 下の表は `crm/scripts/sync.py` で自動生成されます。手動編集すると上書きされるので、顧客情報の変更は `customers/*.md` のfrontmatterに対して行ってください。
+
+<!-- BEGIN: AUTO-CUSTOMER-TABLE -->
 | 顧客 | プラン | ステータス | 次のアクション | 期限 | 優先度 |
 |---|---|---|---|---|---|
-| [Minoru（Y K.）](customers/minoru.md) | スタンダード ¥9,800 | 🟢 制作進行中 | エオリアン初期納品 | **2026-05-03（今日）** | 🔴 P0 |
-| [DAIKI（DAn）](customers/daiki.md) | 週1コンサル＋ロードマップ ¥29,600 | 🟢 成約済み | Stripe入金確認→ロードマップ送付 | 入金後即日 | 🔴 P0 |
-| [TatsuyaN](customers/tatsuyan.md) | ロードマップ購入済み | 🟡 FB待ち | Dropbox音源を聴いて第一回FB送付 | **週末まで** | 🔴 P0 |
-| [なつき（長野大樹）](customers/natsuki.md) | 無料サポート中 | 🔵 有料化タイミング | 1曲完成お祝い返信＋プラン提案 | 今週中 | 🟡 P2 |
-| [hirokazoo（Dさん）](customers/hirokazoo.md) | 無料相談中 | 🔵 相談継続中 | キック改善結果が来たら次のFB | 返信待ち | 🟡 P2 |
+| [Minoruさん（Y K.）](customers/minoru.md) | スタンダードコース ¥9800 | 🟢 制作進行中 | エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート） | 2026-05-03 | 🔴 P0 |
+| [DAIKIさん（DAn）](customers/daiki.md) | 週1個別コンサル＋ロードマップ＋3ヶ月サポート ¥29600 | 🟢 成約済み（入金確認待ち） | Stripe入金確認 → ロードマップアップグレード版送付 | 入金後即日 | 🔴 P0 |
+| [TatsuyaNさん](customers/tatsuyan.md) | DTMロードマップ（有料note） | 🟡 ロードマップ購入済み・FB待ち | 第一回FB送付（約束済み） | 週末まで | 🔴 P0 |
+| [なつきさん（長野大樹）](customers/natsuki.md) | 無料 | 🔵 無料サポート中（有料化タイミング） | 「1曲完成おめでとう＋チャンネル活動の確認」の返信を待ち | 今週中 | 🟡 P2 |
+| [hirokazooさん（Dさん）](customers/hirokazoo.md) | 無料 | 🔵 無料相談中（段階的FB継続） | キックニンジャ改善結果が来たら次のFB | 返信待ち | 🟡 P2 |
+<!-- END: AUTO-CUSTOMER-TABLE -->
 
 ## 今週の優先タスク（タイムボックス順）
 

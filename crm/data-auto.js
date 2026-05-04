@@ -1,0 +1,8 @@
+// 自動生成ファイル — 編集禁止。crm/scripts/sync.py が生成する。
+const customersAuto = [
+  { id: "minoru", name: "Minoruさん", real: "Y K.", priority: "P0", statusKey: "active", status: "制作進行中", plan: "スタンダードコース", planPrice: "¥9800", nextAction: "エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート）", nextDue: "2026-05-03", contact: "Discord / メール（PCメイン）", daw: "Cubase", genre: "ジブリ系×スイング×ダンス（四つ打ち）×昭和歌謡×EDM", file: "customers/minoru.md" },
+  { id: "daiki", name: "DAIKIさん", real: "DAn", priority: "P0", statusKey: "paid", status: "成約済み（入金確認待ち）", plan: "週1個別コンサル＋ロードマップ＋3ヶ月サポート", planPrice: "¥29600", nextAction: "Stripe入金確認 → ロードマップアップグレード版送付", nextDue: "入金後即日", contact: "—", daw: "未開始（機材は揃っている）", genre: "Techno / Tech House", file: "customers/daiki.md" },
+  { id: "tatsuyan", name: "TatsuyaNさん", real: "", priority: "P0", statusKey: "waiting", status: "ロードマップ購入済み・FB待ち", plan: "DTMロードマップ（有料note）", planPrice: "—", nextAction: "第一回FB送付（約束済み）", nextDue: "週末まで", contact: "LINE", daw: "Ableton Live 12", genre: "歌モノ・メロディが映える曲（ビートジャンル未定）", file: "customers/tatsuyan.md" },
+  { id: "natsuki", name: "なつきさん", real: "長野大樹", priority: "P2", statusKey: "free", status: "無料サポート中（有料化タイミング）", plan: "無料", planPrice: "—", nextAction: "「1曲完成おめでとう＋チャンネル活動の確認」の返信を待ち", nextDue: "今週中", contact: "LINE", daw: "GarageBand", genre: "Frenchcore / Speedcore", file: "customers/natsuki.md" },
+  { id: "hirokazoo", name: "hirokazooさん", real: "Dさん", priority: "P2", statusKey: "free", status: "無料相談中（段階的FB継続）", plan: "無料", planPrice: "—", nextAction: "キックニンジャ改善結果が来たら次のFB", nextDue: "返信待ち", contact: "LINE", daw: "Bitwig Studio", genre: "PsyTrance（Full On Trance）", file: "customers/hirokazoo.md" }
+];

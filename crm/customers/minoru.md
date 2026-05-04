@@ -79,3 +79,21 @@ last_updated: 2026-05-03
 - [ ] **エオリアン初期納品** — 期限 2026-05-03（今日）
 - [ ] 納品後、Discordで「修正受付中」を明示
 - [ ] 反応を見て、5月中旬にプロコースの提案を検討
+
+## 返信テンプレへのリンク
+- 初期納品メッセージ → [`replies/minoru/delivery-initial.md`](../replies/minoru/delivery-initial.md)
+- 修正版送付時 → [`replies/minoru/revision-feedback.md`](../replies/minoru/revision-feedback.md)
+- プロコース提案 → [`replies/minoru/upsell-pro.md`](../replies/minoru/upsell-pro.md)
+- 指導期間終了時 → [`replies/minoru/period-end.md`](../replies/minoru/period-end.md)
+
+## 危険サイン早期発見
+- [ ] 修正回数が残り1回 → 仕上げの方向性を確認するメッセージを先回りで送る
+- [ ] 指導期間終了2週間前（5/3頃〜5/10頃） → アップセル提案ウィンドウ
+- [ ] 期間終了直前で修正回数を使い切れていない → 「使う？使わない？」を一声かける
+- [ ] 24時間以上返信が止まる → ソフトリマインドではなく、何か困ってないか優しく聞く（独学2年、感性派、急ぐと逃げる傾向）
+
+## 対応履歴
+- 2026-04-22 — Stripe入金確認（スタンダードコース ¥9,800）
+- 2026-04-23 — 制作開始
+- 2026-05-01 — Minoruさんからギガファイル便でMIDIデータ受領（保存期限：5/8）
+- 2026-05-03 — **エオリアン初期納品予定（本日）**

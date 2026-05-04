@@ -73,3 +73,29 @@ last_updated: 2026-05-03
 - [ ] 入金確認後、**ロードマップアップグレード版を即日送付**
 - [ ] DAIKIさんから5/8以降の日程提案が来たら次回セッションを設定
 - [ ] キックのボディ改善FB（① → ② → ③）を並行して継続
+
+## 返信テンプレへのリンク
+- 入金確認後の初動 → [`replies/daiki/payment-confirmed.md`](../replies/daiki/payment-confirmed.md)
+- 第1回セッション準備 → [`replies/daiki/session-1-prep.md`](../replies/daiki/session-1-prep.md)
+- ②サチュレーション10% → [`replies/daiki/kick-feedback-step2.md`](../replies/daiki/kick-feedback-step2.md)
+- ③ダッキング → [`replies/daiki/kick-feedback-step3.md`](../replies/daiki/kick-feedback-step3.md)
+
+## 危険サイン早期発見
+- [ ] 入金確認から48時間経ってもこちらから初動連絡できていない → 信頼に大きな影響、即座に対応
+- [ ] DAIKIさんから5/14頃まで日程提案が来ない → こちらから候補日を3つ送る形で動く
+- [ ] セッション中に「忙しくて練習できなかった」が2回続く → 宿題の難易度・量を見直す
+- [ ] DJ業務多忙期に重なる → セッション頻度を落とすことを提案（信頼維持）
+
+## 対応履歴
+- 2026-05-02 18:00〜18:30 — オンライン面談（30分・大阪 / Discord）
+  - John Summit / Vintage Cultureで方向性一致
+  - 「お人柄にも触れ合えて良かったです」と良い印象
+  - 週1コンサル＋ロードマップ＋3ヶ月のプランで成約合意
+- 2026-05-02 — Stripe決済リンク送付
+- 2026-05-03 — **Stripe入金確認・ロードマップ送付待ち（本日対応）**
+
+## ⚠️ 名前混同チェック（このファイルを開いた時に必ず確認）
+- 連絡：**Discord「DAn」名義** ／ メールではない
+- ジャンル：**Techno / Tech House** ／ DJ業あり
+- ステータス：**成約済み** ／ 入金確認待ち
+- 「Dさん」と呼ばれた場合 → **hirokazoo（PsyTrance / Bitwig / 無料相談中）であって、こちらDAIKIではない**

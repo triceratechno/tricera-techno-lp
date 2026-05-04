@@ -41,3 +41,20 @@ last_updated: 2026-05-03
 - [ ] **Dropbox音源（`TatsuyaN_submission.zip`）を聴いて第一回FBを作成**
 - [ ] **週末までに送付**（約束遵守）
 - [ ] FB後、自然な流れで個別サポートプラン（スタンダードコース）を提案
+
+## 返信テンプレへのリンク
+- FB予告（聴く前） → [`replies/tatsuyan/fb-preview.md`](../replies/tatsuyan/fb-preview.md)
+- 第一回FB骨組み → [`replies/tatsuyan/fb-first-skeleton.md`](../replies/tatsuyan/fb-first-skeleton.md)
+- スタンダード提案 → [`replies/tatsuyan/upsell-standard.md`](../replies/tatsuyan/upsell-standard.md)
+
+## 危険サイン早期発見
+- [ ] **約束した「週末まで」を1分でも過ぎる前に**、遅れる旨を必ず連絡（信頼の根幹）
+- [ ] 第一回FBを送ってから1週間以内に反応がない → 軽くリマインド（プレッシャーNG）
+- [ ] 投げ銭・コメントの頻度が落ちる → 関係性に何かサインがある可能性、こちらから接点を作る
+- [ ] アップセル提案を入れるタイミング → 第一回FBの後、最低1往復はやり取りしてから
+
+## 対応履歴
+- 過去 — 投げ銭・コメント等で長期サポーター
+- 過去 — DTMロードマップ（有料note）購入
+- 直近 — Dropboxで音源（`TatsuyaN_submission.zip`）＋テキストメモ送付済み
+- 「週末までにFB返送」と約束済み
