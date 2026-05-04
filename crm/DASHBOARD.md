@@ -12,7 +12,7 @@
 |---|---|---|---|---|---|
 | [Minoruさん（Y K.）](customers/minoru.md) | スタンダードコース ¥9800 | 🟢 制作進行中 | エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート） | 2026-05-03 | 🔴 P0 |
 | [DAIKIさん（DAn）](customers/daiki.md) | 週1個別コンサル＋ロードマップ＋3ヶ月サポート ¥29600 | 🟢 成約済み（入金確認待ち） | Stripe入金確認 → ロードマップアップグレード版送付 | 入金後即日 | 🔴 P0 |
-| [TatsuyaNさん](customers/tatsuyan.md) | DTMロードマップ（有料note） | 🟡 ロードマップ購入済み・FB待ち | 第一回FB送付（約束済み） | 週末まで | 🔴 P0 |
+| [TatsuyaNさん](customers/tatsuyan.md) | DTMロードマップ（有料note） | ⚪ 第一回FB送付済み・反応待ち | ベース打ち込みタイミング修正後の音源待ち / フィルインサンプル送付待ち | 返信待ち | 🔴 P0 |
 | [なつきさん（長野大樹）](customers/natsuki.md) | 無料 | 🔵 無料サポート中（有料化タイミング） | 「1曲完成おめでとう＋チャンネル活動の確認」の返信を待ち | 今週中 | 🟡 P2 |
 | [hirokazooさん（Dさん）](customers/hirokazoo.md) | 無料 | 🔵 無料相談中（段階的FB継続） | キックニンジャ改善結果が来たら次のFB | 返信待ち | 🟡 P2 |
 <!-- END: AUTO-CUSTOMER-TABLE -->
