@@ -2,7 +2,7 @@
 id: yasu
 display_name: やすさん
 real_name: 保浦康晴
-status: 無料相談中・ロードマップ案内タイミング（自発的興味表明）
+status: ロードマップPROコース案内送付済み・反応待ち
 priority: P0
 plan: 無料
 plan_price: 0
@@ -14,10 +14,10 @@ references:
   - Anyma - Bad Angel
   - Anyma - Coachella set
 acquisition_channel: LINE登録（公式LINEオンボーディング経由）
-proposal_target_plan: スタンダードコース（¥9,800）
-next_action: ロードマップ案内 → スタンダードコース提案
-next_action_due: 24時間以内（ホットリード・即対応）
-last_updated: 2026-05-04
+proposal_target_plan: ロードマップPROコース + 3ヶ月サポート（¥19,800・新体系）
+next_action: やすさんからの返信待ち（申込 / 質問 / 検討）
+next_action_due: 反応待ち
+last_updated: 2026-05-05
 ---
 
 # やすさん（保浦康晴）
@@ -84,13 +84,40 @@ last_updated: 2026-05-04
 > ロードマップに興味があるのですが、内容を教えていただいてもよろしいでしょうか？
 
 ## 次のアクション
-- [ ] **24時間以内**にロードマップ内容案内＋スタンダードコース提案を送付
-- [ ] 返信は `replies/yasu/roadmap-introduction.md` を参照
-- [ ] 反応を見て、不安・質問が出れば丁寧に回答
-- [ ] スタンダード成約なら入金確認 → 制作開始フローへ
+- [x] ~~24時間以内にロードマップ内容案内を送付~~ → **2026-05-05 送付済み**
+- [ ] やすさんからの返信を待つ（パターン別対応は `replies/yasu/response-patterns.md`）
+- [ ] 申込なら：Stripe決済リンク送付 → 入金確認 → 購入者専用ハブへ案内
+- [ ] 質問なら：丁寧に回答（押し売りNG）
+- [ ] 沈黙1週間なら：ソフトリマインド1通
+- [ ] 「PCで見てください」と伝えたので、後日 LP のスマホ表示改善も検討課題
+
+## 送信した実際のメッセージ（2026-05-05）
+
+```
+やすさん、ありがとうございます
+
+「同じ音が再現できなくて止まる」←これめちゃくちゃ分かります。
+独学だとほぼ100%通る場所なので、むしろ次のステップに進むタイミングです。
+私も2年間は一曲も完成できませんでした。。
+
+実は一般公開はしていないんですが、自分からご質問いただいたやすさんだけの特別に、
+独学の壁を突破し、一曲完成するための、
+ロードマップPROコースの詳細はこちらにまとめてあります👇
+https://triceratechno.github.io/roadmap-lp/
+（可能であればPCでご覧ください。スマホだとうまく表示されない場合があります。）
+
+まずはこちらをご覧ください。
+内容で気になることがあれば、ロードマップに関するご質問お待ちしています。
+```
+
+### 送信時に効かせた仕掛け
+- **自己開示で共感**：「私も2年間は一曲も完成できませんでした。。」
+- **特別感の演出**：「自分からご質問いただいたやすさんだけの特別」
+- **PC推奨の注釈**：UX配慮で実用的
 
 ## 返信テンプレへのリンク
-- ロードマップ案内 → [`replies/yasu/roadmap-introduction.md`](../replies/yasu/roadmap-introduction.md)
+- ロードマップ案内 → [`replies/yasu/roadmap-introduction.md`](../replies/yasu/roadmap-introduction.md)（送付済み・参考用）
+- 反応パターン別対応 → [`replies/yasu/response-patterns.md`](../replies/yasu/response-patterns.md)
 
 ## 危険サイン早期発見
 - [ ] **24時間以上返信を保留しない**（ホットリード・温度が下がる）
