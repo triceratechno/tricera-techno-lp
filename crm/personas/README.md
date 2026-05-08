@@ -12,6 +12,9 @@
 | [N さん](natsuki-persona.md) | なつき（長野大樹） | 独学1年・1曲完成・サビの迫力に詰まる若い世代 |
 | [T さん](tatsuyan-persona.md) | TatsuyaN | 古参サポーター → 自分も作る側に回った人 |
 | [H さん](hirokazoo-persona.md) | hirokazoo（Dさん） | マイナージャンル特化・独自コンセプト追求 |
+| [Y さん](yasu-persona.md) | やす（保浦康晴） | Anyma好き・独学初心者・「同じ音が再現できない」で詰まる |
+| [A さん](atsuki-persona.md) | ATSUKI（♠︎atsuki♪） | DTM歴2年・YouTube投稿中の中級者・有料化に踏み切れない |
+| [U さん](yuta-persona.md) | 雄太 | DTM歴1ヶ月の完全初心者・コード進行のベタ打ちで止まる |
 
 ## 共通フォーマット
 

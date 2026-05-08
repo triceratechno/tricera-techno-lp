@@ -3,8 +3,8 @@ id: atsuki
 display_name: ATSUKIさん
 line_display: ♠︎atsuki♪
 nickname: ATSUKI
-status: 継続無料FB中・Break+LUFS フィードバック作成待ち
-priority: P0
+status: Break+LUFS FB完成版あり・送信保留（向こうから欲しがってから送る方針）
+priority: P2
 plan: 無料
 plan_price: 0
 contact_method: LINE
@@ -15,12 +15,12 @@ references:
   - Martin Garrix
 youtube_channel: https://youtube.com/@atsuki0226
 acquisition_channel: LINE登録（公式LINEオンボーディング経由）
-proposal_target_plan: ロードマップPROコース + 3ヶ月サポート（¥19,800・新体系）
-roadmap_status: 過去案内済み（旧URL）→ 「検討させていただきます」で保留中
+proposal_target_plan: ロードマップPROコース + 3ヶ月サポート（¥19,800・新体系）※購入意欲が現れた時点で
+roadmap_status: 過去案内済み（旧URL）→ 「検討させていただきます」で保留中・購入につながる雰囲気は薄い
 video_feature_consent: ✓ 承諾済み（FB事例として動画で取り上げる了承得た）
-next_action: Break構成の個性化＋LUFS/マスタリングのフィードバック作成（2-3日以内に約束）
-next_action_due: 2026-05-07〜08頃
-last_updated: 2026-05-05
+next_action: ATSUKIさんから音源 or 質問が来たら、保留中の Break+LUFS FB を送付
+next_action_due: 反応待ち（こちらから動かない）
+last_updated: 2026-05-08
 ---
 
 # ATSUKIさん（♠︎atsuki♪）
@@ -127,11 +127,20 @@ last_updated: 2026-05-05
   - 「2-3日お時間いただきます」と返答
   - **次のFBで両方に答える宿題が発生中**
 
-## 次のアクション（最優先）
-- [ ] **Break + LUFS のフィードバックを2-3日以内に作成**
-- [ ] 楽曲を聴き込んで具体的に
-- [ ] ロードマップへの自然な接続（**STEP 7「アレンジ構成」 / STEP 9「マスタリング」で体系的に学べる**）
-- [ ] FB送付後、ロードマップ提案の温度を見て改めて打診のタイミング判断
+## 次のアクション（方針変更：受動対応）
+
+### 🔄 方針変更（2026-05-08）
+- ロードマップ過去案内済み・「検討させていただきます」で保留 → **購入につながる雰囲気は薄い** と判断
+- 既に5ラウンド以上の無料FBを実施しており、これ以上の能動的な価値提供は経営的にバランスを欠く
+- **方針：こちらから動かず、ATSUKIさんが音源or質問を投げてきたら、その時に保留中の Break+LUFS FB を送付する**
+- これは「無料FB継続中だが、能動的な追加サポートはしない」というスタンスへのシフト
+
+### 具体的にやること
+- [x] ~~2-3日以内に Break+LUFS FB作成~~ → **完成版を準備済み**（`replies/atsuki/break-lufs-feedback.md`）
+- [ ] **ATSUKIさんから音源 or 質問が来たら、保留中のFBを送る**
+- [ ] こちらからリマインドはしない
+- [ ] もし向こうから「ロードマップを買いたい」と動きが出たら、すぐに新体系（¥19,800）案内へ
+- [ ] 動画FB事例化は ATSUKIさん承諾済みなので、こちらの都合のいいタイミングで実施可能
 
 ## 返信テンプレへのリンク
 - Break + LUFS フィードバック準備 → [`replies/atsuki/break-lufs-feedback.md`](../replies/atsuki/break-lufs-feedback.md)
