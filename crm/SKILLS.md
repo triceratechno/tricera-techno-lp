@@ -17,7 +17,7 @@
 
 ---
 
-## 1. 現在の顧客（8名・2026-05-08時点）
+## 1. 現在の顧客（9名・2026-05-08時点）
 
 | ID | 表示名 | 連絡 | DAW | ジャンル | プラン | ステータス | 優先度 |
 |---|---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@
 | yasu | やすさん（保浦康晴） | LINE | Ableton Live | Melodic Techno（Anyma好き） | 無料 | LP案内送付済み・反応待ち | P0 |
 | atsuki | ATSUKIさん（♠︎atsuki♪） | LINE | FL Studio | Progressive House | 無料 | Break+LUFS FB送付済み・反応待ち | P0 |
 | yuta | 雄太さん | LINE | Studio One Professional | EDM（軸決定）／エレクトロスウィング | 無料 | EDM軸決定・ジェヘナドロップ課題提示済み | P0 |
+| shoryu | 翔琉さん | LINE | 未確認 | 未確認 | 無料 | 新規・初回質問受領（テンプレ未提出） | P0 |
 
 → 詳細は **[`customers/`](customers/)** 配下の各ファイル
 
