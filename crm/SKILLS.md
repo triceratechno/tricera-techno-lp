@@ -17,7 +17,7 @@
 
 ---
 
-## 1. 現在の顧客（9名・2026-05-08時点）
+## 1. 現在の顧客（12名・2026-05-09時点）
 
 | ID | 表示名 | 連絡 | DAW | ジャンル | プラン | ステータス | 優先度 |
 |---|---|---|---|---|---|---|---|
@@ -30,6 +30,9 @@
 | atsuki | ATSUKIさん（♠︎atsuki♪） | LINE | FL Studio | Progressive House | 無料 | Break+LUFS FB送付済み・反応待ち | P0 |
 | yuta | 雄太さん | LINE | Studio One Professional | EDM（軸決定）／エレクトロスウィング | 無料 | EDM軸決定・ジェヘナドロップ課題提示済み | P0 |
 | shoryu | 翔琉さん | LINE | 未確認 | 未確認 | 無料 | 新規・初回質問受領（テンプレ未提出） | P0 |
+| nob | NOBさん（Nob3578） | LINE | Ableton Live | Tech House / House（DJ） | 旧ロードマップ1.0 ¥9,800 | **完走系・サポート延長中・応援者** | P2 |
+| takamatsu | 高松さん（高松泰樹） | LINE | FL Studio | bermei.inazawa風（同人音楽） | 旧ロードマップ1.0 ¥9,800 | **STEP10完走済み・人生転換ストーリー** | P2 |
+| urano | 上野さん（うらの／上野麻弥） | LINE | Bitwig Studio | Minimal Techno（Richie Hawtin志向） | 旧ロードマップ1.0 ¥9,800＋ラボ | **STEP3進行中・応援者・完全初心者→成長中** | P2 |
 
 → 詳細は **[`customers/`](customers/)** 配下の各ファイル
 
