@@ -3,13 +3,13 @@ id: minoru
 display_name: Minoruさん
 real_name: Y K.
 discord_handle: mino
-status: 制作進行中
+status: 制作中・本日（2026-05-09）中納品の再約束済み
 priority: P0
 plan: スタンダードコース
 plan_price: 9800
 payment_date: 2026-04-22
 production_start: 2026-04-23
-delivery_due: 2026-05-03
+delivery_due: 2026-05-09（再約束）／当初目安 2026-05-03
 support_end: 2026-05-17
 remaining_revisions: 2
 refund_window: 納品48時間以内申請で全額返金
@@ -23,9 +23,9 @@ references:
   - ラビットまろ（Nothing Can Stop Me Now）
   - Mari Iijima（リンゴの森の子猫たち）
 sns: YouTube登録済 / Instagram相互フォロー
-next_action: エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート）
-next_action_due: 2026-05-03
-last_updated: 2026-05-03
+next_action: エオリアン初期納品（本日中・5/9）／間に合わない場合は早めの遅延予告
+next_action_due: 2026-05-09 中
+last_updated: 2026-05-09
 ---
 
 # Minoruさん（Y K. / Discord: mino）
@@ -82,6 +82,7 @@ last_updated: 2026-05-03
 
 ## 返信テンプレへのリンク
 - 初期納品メッセージ → [`replies/minoru/delivery-initial.md`](../replies/minoru/delivery-initial.md)
+- **途中経過・遅延予告**（5/9 急場用）→ [`replies/minoru/delay-warning.md`](../replies/minoru/delay-warning.md)
 - 修正版送付時 → [`replies/minoru/revision-feedback.md`](../replies/minoru/revision-feedback.md)
 - プロコース提案 → [`replies/minoru/upsell-pro.md`](../replies/minoru/upsell-pro.md)
 - 指導期間終了時 → [`replies/minoru/period-end.md`](../replies/minoru/period-end.md)
@@ -95,5 +96,17 @@ last_updated: 2026-05-03
 ## 対応履歴
 - 2026-04-22 — Stripe入金確認（スタンダードコース ¥9,800）
 - 2026-04-23 — 制作開始
-- 2026-05-01 — Minoruさんからギガファイル便でMIDIデータ受領（保存期限：5/8）
-- 2026-05-03 — **エオリアン初期納品予定（本日）**
+- 2026-05-01 — Minoruさんからギガファイル便でMIDIデータ受領（リズムパート抜きオーディオ・ドラムMIDI・ClapMIDI 計4点）
+- 2026-05-02 — トリケラ：MIDI 4点ローカル保存完了確認のメッセージ送付。「Clap/Snapを始まりと終わりにも入れる判断とても良い」「明るいサウンドが希望をもたらす」を引用しつつ「作業に入るので少しお時間ください」と伝達
+- 2026-05-02 11:23 — Minoru：「お疲れ様です。ご連絡ご確認頂きまして、ありがとうございます。了解です・・・お手数お掛け致しますが、宜しくお願いします。どうか良い連休を、お身体お大事にお過ごし下さい。」← **理解ある反応・関係性は良好**
+- 2026-05-03 — 当初の初期納品目安日（過ぎた）
+- 2026-05-08 — 一度目の納期修正案（→5/8）が頭にあったが正式な再連絡なし
+- **2026-05-09 14:55 — トリケラ：「大変お待たせしてしまい申し訳ございません。構想を練りましたので、今から取り掛かり、本日中にデータをお渡しいたします」と新たな約束**
+- **2026-05-09 → 本日中の納品が信頼維持の絶対条件**
+
+## ⚠️ 現状の最重要事項（2026-05-09時点）
+
+- **「本日中に納品」と明示的に約束した**ので、これを守るのが最優先
+- 当初納期（5/3）から既に6日経過しているため、もう一度遅延を出すと信頼大幅低下
+- 仮に時間に間に合いそうにない場合、**結果が出る前に「○時頃になりそう」と予告連絡**を入れる（PLAYBOOK_EMERGENCY.md §3 のセオリー）
+- Minoruさんは5/2時点で温かい反応をくれているので、関係性は依然良好。**雑な納品で帳尻合わせするより、丁寧な仕上がりを少し時間かけて出す方が長期的にプラス**（ただし今日中の前提で）
