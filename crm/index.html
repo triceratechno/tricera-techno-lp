@@ -164,6 +164,7 @@
   .card-status.paid { background: rgba(56,189,248,0.15); color: var(--status-paid); }
   .card-status.free { background: rgba(167,139,250,0.15); color: var(--status-free); }
   .card-status.waiting { background: rgba(251,191,36,0.15); color: var(--status-waiting); }
+  .card-status.graduated { background: rgba(156,163,175,0.15); color: #9ca3af; }
 
   .card-row {
     display: flex;
@@ -335,37 +336,43 @@
 
 <div class="stats">
   <div class="stat-card">
-    <div class="stat-label">今日のタスク</div>
-    <div class="stat-value urgent" id="stat-today">2</div>
+    <div class="stat-label">反応待ち（P0）</div>
+    <div class="stat-value warn" id="stat-today">6</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">今週のタスク</div>
-    <div class="stat-value warn" id="stat-week">3</div>
+    <div class="stat-label">今週の確認タスク</div>
+    <div class="stat-value warn" id="stat-week">2</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">成約済み</div>
-    <div class="stat-value ok" id="stat-paid">1</div>
+    <div class="stat-label">成約・契約中</div>
+    <div class="stat-value ok" id="stat-paid">2</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">無料相談・サポート</div>
-    <div class="stat-value" id="stat-free">2</div>
+    <div class="stat-value" id="stat-free">6</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">制作進行中</div>
-    <div class="stat-value ok" id="stat-active">1</div>
+    <div class="stat-label">完走系（過去顧客）</div>
+    <div class="stat-value" id="stat-active">3</div>
   </div>
 </div>
 
 <div class="alert-banner" id="urgent-banner">
-  <h3>🔴 今日中にやること（2026-05-03）</h3>
+  <h3>🔴 直近の対応待ち（2026-05-10）</h3>
   <ul>
-    <li><strong>Minoru</strong> — エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート） ／ ⚠️ ギガファイル便MIDIの保存期限：5/8まで</li>
-    <li><strong>DAIKI</strong> — Stripe入金確認 → 確認できたらロードマップアップグレード版を即日送付</li>
+    <li><strong>反応待ち多数</strong>：Minoru（修正FB） / DAIKI（LP案内反応・入金） / TatsuyaN（修正音源） / やす（LP申込判断） / 翔琉（音源依頼判断）</li>
+    <li><strong>5/15予定</strong>：雄太さんのジェヘナドロップ進捗確認</li>
+    <li><strong>沈黙確認候補</strong>：やす（5/5から）／ TatsuyaN（5/4から）／ なつき（返信待ち継続）／ hirokazoo（キックニンジャ結果待ち）</li>
   </ul>
 </div>
 
 <div class="name-warning">
-  ⚠️ <strong>名前の混同注意</strong>：「Dさん」= <strong>hirokazoo</strong>（PsyTrance / Bitwig / 無料相談中） ≠ <strong>DAIKI（DAn）</strong>（Techno / DJ / 成約済み）。返信前に必ず連絡手段・ジャンル・ステータスの3点で照合すること。
+  ⚠️ <strong>名前の混同注意</strong>：
+  <br>「<strong>Dさん</strong>」= <strong>hirokazoo</strong>（LINE / PsyTrance / Bitwig） ≠ <strong>DAIKI（DAn）</strong>（Discord / Techno / DJ）
+  <br>「<strong>mino / Minoru</strong>」（Discord / Cubase / ジブリ系）／「<strong>Nob3578 / NOB</strong>」（LINE / Tech House / DJ）
+  <br>「<strong>♠︎atsuki♪ / ATSUKI</strong>」（LINE / FL Studio / Progressive House）／「<strong>うらの / 上野</strong>」（LINE / Bitwig / Minimal）
+  <br>「<strong>やす</strong>」（LINE / Ableton / Anyma系）／「<strong>翔琉</strong>」（LINE / JPOPロック）／「<strong>雄太</strong>」（LINE / Studio One / EDM）
+  <br>返信前に必ず<strong>連絡手段・ジャンル・ステータス</strong>の3点で本人を確定させること。
 </div>
 
 <div class="actions">
@@ -384,6 +391,7 @@
   <button class="filter-btn" data-filter="paid">🟢 成約済み</button>
   <button class="filter-btn" data-filter="free">🔵 無料段階</button>
   <button class="filter-btn" data-filter="waiting">🟡 待ち</button>
+  <button class="filter-btn" data-filter="graduated">🎓 完走系</button>
 </div>
 
 <div class="grid" id="customer-grid"></div>
@@ -424,15 +432,15 @@ const customers = [
     real: "Y K. / Discord: mino",
     priority: "P0",
     statusKey: "active",
-    status: "🟢 制作進行中",
-    plan: "スタンダードコース",
+    status: "🟢 初期納品送付済み・修正FB待ち",
+    plan: "旧スタンダードコース",
     planPrice: "¥9,800",
-    nextAction: "エオリアン初期納品（MIDIデータ・音色差し替え・リズムパート）",
-    nextDue: "2026-05-03（今日）",
+    nextAction: "Minoruさんからの修正フィードバック待ち（修正残り2回・指導期間〜5/17）",
+    nextDue: "フィードバック待ち",
     contact: "Discord / メール",
     daw: "Cubase（DTM歴2年）",
     genre: "ジブリ系×スイング×ダンス×昭和歌謡×EDM",
-    warning: "ギガファイル便MIDIの保存期限：5/8まで（5/1受領+7日）",
+    warning: "5/9 Clap/Snap MIDI 6ファイル納品済み（A/B × 3組み合わせ）",
     detail: {
       "基本情報": [
         ["メール", "a.motherleaf@gmail.com"],
@@ -508,11 +516,11 @@ const customers = [
     real: "DAn（大阪）",
     priority: "P0",
     statusKey: "paid",
-    status: "🟢 成約済み（入金確認待ち）",
-    plan: "週1コンサル＋ロードマップ＋3ヶ月",
+    status: "🟢 新LP案内送付済み・反応待ち",
+    plan: "旧週1コンサル＋ロードマップ＋3ヶ月（=新¥19,800+ビデオ面談¥9,800）",
     planPrice: "¥29,600",
-    nextAction: "Stripe入金確認 → ロードマップアップグレード版送付",
-    nextDue: "入金後即日",
+    nextAction: "DAnさんからの反応 + Stripe入金確認 + 5/8以降のセッション日程提案",
+    nextDue: "反応待ち",
     contact: "Discord（DAn）",
     daw: "未開始（機材は揃ってる）",
     genre: "Techno / Tech House",
@@ -580,18 +588,18 @@ const customers = [
   {
     id: "tatsuyan",
     name: "TatsuyaNさん",
-    real: "初期からのサポーター",
+    real: "初期からのサポーター（プロデューサー的）",
     priority: "P0",
     statusKey: "waiting",
-    status: "🟡 ロードマップ購入済み・FB待ち",
-    plan: "DTMロードマップ（有料note）",
+    status: "🟡 第一回FB送付済み・反応待ち",
+    plan: "旧ロードマップ単品（有料note）",
     planPrice: "—",
-    nextAction: "Dropbox音源を聴いて第一回FBを送付（約束済み）",
-    nextDue: "週末まで",
+    nextAction: "ベース打ち込みタイミング修正後の音源 / フィルサンプル送付待ち",
+    nextDue: "返信待ち",
     contact: "LINE",
     daw: "Ableton Live 12",
-    genre: "歌モノ・メロディが映える曲（ビートジャンル未定）",
-    warning: "「週末までにFB」と約束済み。守ること！",
+    genre: "歌モノ（Krysta Youngs共作・I, Manikin / BPM 130 / B minor）",
+    warning: "5/4 第一回FB送付（1日遅延謝罪済み）。Q5「ベースをキック後にずらす」が核心",
     detail: {
       "基本情報": [
         ["連絡手段", "LINE"],
@@ -723,10 +731,231 @@ const customers = [
       }
     ],
     file: "customers/hirokazoo.md"
+  },
+  {
+    id: "yasu",
+    name: "やすさん",
+    real: "保浦康晴",
+    priority: "P0",
+    statusKey: "waiting",
+    status: "🟡 ロードマップPROコース案内送付済み・反応待ち",
+    plan: "無料相談中",
+    planPrice: "—",
+    nextAction: "やすさんからの返信待ち（申込 / 質問 / 検討）",
+    nextDue: "反応待ち（5/5から経過中）",
+    contact: "LINE",
+    daw: "Ableton Live",
+    genre: "Melodic Techno（Anyma好き）",
+    warning: "Bad Angel のドロップを真似ようとして「同じ音が再現できない」で詰まり中。ホットリード",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Ableton Live"],
+        ["ジャンル", "Melodic Techno"],
+        ["参考アーティスト", "Anyma（特に Bad Angel）"],
+        ["DTM歴", "結構前にDAW購入したが触ったり触らなかったり"]
+      ],
+      "現状": [
+        ["状態", "ロードマップに興味を表明（自発的）"],
+        ["案内日", "2026-05-05 LP案内送付"],
+        ["LP", "https://triceratechno.github.io/roadmap-lp/"]
+      ]
+    },
+    file: "customers/yasu.md"
+  },
+  {
+    id: "atsuki",
+    name: "ATSUKIさん",
+    real: "♠︎atsuki♪",
+    priority: "P2",
+    statusKey: "waiting",
+    status: "🟡 Break+LUFS FB完成版あり・送信保留（受動モード）",
+    plan: "無料相談中（5回FB済み）",
+    planPrice: "—",
+    nextAction: "ATSUKIさんから音源 or 質問が来たら、保留中のFBを送付",
+    nextDue: "反応待ち（こちらから動かない）",
+    contact: "LINE",
+    daw: "FL Studio（DTM歴2年）",
+    genre: "Progressive House（Martin Garrix好き）",
+    warning: "ロードマップ案内済み・「検討します」で保留中。購入意欲は薄いと判断 → 受動モード切り替え",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "FL Studio"],
+        ["DTM歴", "2年"],
+        ["ジャンル", "Progressive House"],
+        ["参考アーティスト", "Martin Garrix"],
+        ["YouTube", "https://youtube.com/@atsuki0226"]
+      ],
+      "状態": [
+        ["承諾済み", "動画FB事例として取り上げる了承得た"],
+        ["過去FB", "OTT 20% / ダイナミックEQ / リバーブ過多 / ボーカル前出し / Break+LUFS（保留）"],
+        ["完成版FB", "replies/atsuki/break-lufs-feedback.md に保管"]
+      ]
+    },
+    file: "customers/atsuki.md"
+  },
+  {
+    id: "yuta",
+    name: "雄太さん",
+    real: "雄太",
+    priority: "P0",
+    statusKey: "free",
+    status: "🔵 EDM軸決定・ジェヘナドロップ課題進行中",
+    plan: "無料相談中",
+    planPrice: "—",
+    nextAction: "1週間後の進捗確認 or 雄太さんからの質問・進捗報告を待つ",
+    nextDue: "2026-05-15頃に確認",
+    contact: "LINE",
+    daw: "Studio One Professional",
+    genre: "EDM（軸決定）／ エレクトロスウィング（保留）",
+    warning: "DTM歴1ヶ月の完全初心者。情報量過多に注意・ロードマップ案内は絶対NG",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Studio One Professional"],
+        ["DTM歴", "1ヶ月（完全初心者）"],
+        ["ジャンル", "EDM / エレクトロスウィング"],
+        ["参考曲", "ジェヘナ - wotaku（BPM 128 / B Major）／アブソリュート - YASUHIRO（BPM 114）"]
+      ],
+      "現在の課題": [
+        ["内容", "ジェヘナのドロップ部分を4〜8小節だけ真似て作る"],
+        ["設定", "BPM 128 / B Major / Studio One Professional"],
+        ["原典", "コード進行ベタ打ち + 楽器選びで盛り上げ・期待感作れない"]
+      ]
+    },
+    file: "customers/yuta.md"
+  },
+  {
+    id: "shoryu",
+    name: "翔琉さん",
+    real: "翔琉",
+    priority: "P0",
+    statusKey: "free",
+    status: "🔵 第2回返答送付済み・反応待ち",
+    plan: "無料相談中",
+    planPrice: "—",
+    nextAction: "翔琉さんの反応待ち（音源依頼／JPOPロック専門探し／自力試行のいずれか）",
+    nextDue: "反応待ち",
+    contact: "LINE",
+    daw: "不明（要確認・耳コピ中心）",
+    genre: "JPOPロック / ボカロP系譜（ヨルシカ・Orangestar）",
+    warning: "観察力高い・恐縮するタイプ。一般論で答えると見抜かれる。ロードマップ案内は早すぎ厳禁",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "不明（要確認）"],
+        ["ジャンル", "JPOPロック / ボカロP系譜"],
+        ["参考アーティスト", "ヨルシカ（n-buna）/ Orangestar"],
+        ["目標", "夏までに自作曲リリース"],
+        ["練習法", "耳コピ中心 + 第三者FB依頼"]
+      ],
+      "課題": [
+        ["第1回質問", "プロは分業？ 1人で全部やる人どれくらい？（業界構造）"],
+        ["第2回相談", "耳コピと原曲を聴き比べると耳コピの方がこもる（第三者でも確認）"],
+        ["FB方針", "技術論より「人に聞いてもらう」を本筋に提示。EDM/ダンス専門の限界も正直開示"]
+      ]
+    },
+    file: "customers/shoryu.md"
+  },
+  {
+    id: "nob",
+    name: "NOBさん",
+    real: "Nob3578（DJ・応援者）",
+    priority: "P2",
+    statusKey: "graduated",
+    status: "🎓 旧ロードマップ1.0 完走系・サポート延長中",
+    plan: "旧ロードマップ1.0",
+    planPrice: "¥9,800",
+    nextAction: "STEP取り組み中の延長サポート継続・新ロードマップ¥98,000リエンゲージ候補",
+    nextDue: "—",
+    contact: "LINE",
+    daw: "Ableton Live",
+    genre: "Tech House / House（DJ）",
+    warning: "応援者・YouTubeコメント・Discord構築の助言提供者。新¥98,000 LIFETIMEの最有力候補",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Ableton Live"],
+        ["DTM歴", "3ヶ月（購入時）→ STEP1-7完走"],
+        ["ジャンル", "Tech House / House"],
+        ["副業", "DJ"],
+        ["参考曲", "Supernova - Velvet Avenue（BPM 129 / F minor）"]
+      ],
+      "関係性": [
+        ["購入", "ロードマップ1.0 / 動画6本 / マガジン仮（返金不要・1回相談で代替）"],
+        ["貢献", "Discord vs LINE 設計の助言提供"],
+        ["サポート", "公式期間〜2026-04-19（取り組み中STEPまで延長）"]
+      ]
+    },
+    file: "customers/nob.md"
+  },
+  {
+    id: "takamatsu",
+    name: "高松さん",
+    real: "高松泰樹",
+    priority: "P2",
+    statusKey: "graduated",
+    status: "🎓 旧ロードマップ1.0 完走済み・人生転換ストーリー",
+    plan: "旧ロードマップ1.0",
+    planPrice: "¥9,800",
+    nextAction: "完走者・新¥98,000 LIFETIMEの最有力候補",
+    nextDue: "—",
+    contact: "LINE",
+    daw: "FL Studio",
+    genre: "bermei.inazawa風（同人音楽）",
+    warning: "「私の人生も大きく変わった」発言。アンケート掲載許可済み。LP最強素材",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "FL Studio"],
+        ["DTM歴", "0年から開始 → STEP10完走"],
+        ["ジャンル", "bermei.inazawa風（同人音楽）"],
+        ["レファレンス", "bermei.inazawa - Circle (zts mix) / BPM 120 / Bb major"]
+      ],
+      "関係性": [
+        ["動機", "20年以上前にinazawaの同人アルバムに感動・人生折り返しでDTM挑戦"],
+        ["プラグイン購入", "Valhalla VintageVerb / Kickstart 2（ロードマップ進行中に購入）"],
+        ["完走", "STEP1-10すべて完走・アンケート掲載許可済み"]
+      ]
+    },
+    file: "customers/takamatsu.md"
+  },
+  {
+    id: "urano",
+    name: "上野さん",
+    real: "上野麻弥（うらの）",
+    priority: "P2",
+    statusKey: "graduated",
+    status: "🎓 旧ロードマップ1.0 + ラボ購入済み・サポート延長中",
+    plan: "旧ロードマップ1.0 + トリケラテクノ・ラボ",
+    planPrice: "¥9,800+",
+    nextAction: "STEP3進行中の延長サポート継続・新¥98,000 LIFETIMEの最有力候補",
+    nextDue: "—",
+    contact: "LINE",
+    daw: "Bitwig Studio",
+    genre: "Minimal Techno（Richie Hawtin志向）",
+    warning: "完全初心者→ラボ購入の応援者。「フリーズタイプ」自認・質問しやすい雰囲気を保つ",
+    detail: {
+      "基本情報": [
+        ["連絡手段", "LINE"],
+        ["DAW", "Bitwig Studio"],
+        ["DTM歴", "0年（DAWに触ること自体が初）"],
+        ["ジャンル", "Minimal Techno / Tech House / Techno"],
+        ["DJ目標", "Richie Hawtin"],
+        ["レファレンス", "Alexx Wolfe - Magma / BPM 126 / F minor"]
+      ],
+      "関係性": [
+        ["購入", "ロードマップ1.0 / トリケラテクノ・ラボ / DTM解説動画6本 / Serum予定"],
+        ["性格", "丁寧で謙虚・「？になるとフリーズ」自認"],
+        ["完走", "STEP2-4まで完了・STEP3+で延長サポート対象"]
+      ]
+    },
+    file: "customers/urano.md"
   }
 ];
 
-const dataDate = "2026-05-03";
+const dataDate = "2026-05-10";
 document.getElementById("last-updated").textContent = dataDate;
 document.getElementById("customer-count").textContent = customers.length + "名";
 
