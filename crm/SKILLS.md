@@ -23,7 +23,7 @@
 |---|---|---|---|---|---|---|---|
 | minoru | Minoruさん（Y K.） | Discord | Cubase | ジブリ系×ダンス×昭和歌謡 | 旧スタンダードコース ¥9,800 | 初期納品送付済み・修正FB待ち | P0 |
 | daiki | DAIKIさん（DAn） | Discord | 未開始 | Techno / Tech House | **新ロードマップPRO+3ヶ月 ¥19,800 + ビデオ面談 ¥9,800 = ¥29,600** | 新LP案内送付済み・反応待ち | P0 |
-| tatsuyan | TatsuyaNさん | LINE | Ableton Live 12 | 歌モノ（Krysta共作・I,Manikin） | 旧ロードマップ単品（有料note版） | 第一回FB送付済み・反応待ち | P0 |
+| tatsuyan | TatsuyaNさん | LINE | Ableton Live 12 | 歌モノ（Krysta共作・I,Manikin） | 旧ロードマップ1.0（有料note版・¥9,800） | **STEP2進行中**・第一回FB送付済み・反応待ち | P0 |
 | natsuki | なつきさん（長野大樹） | LINE | GarageBand | Frenchcore / Speedcore | 無料相談中 | 有料化タイミング・返信待ち | P2 |
 | hirokazoo | hirokazooさん（Dさん） | LINE | Bitwig + Spire | PsyTrance | 無料相談中 | 段階的FB継続中・結果待ち | P2 |
 | yasu | **やすさん（保浦康晴）** | LINE | Ableton Live | Melodic Techno（Anyma好き） | **新ロードマップPRO+3ヶ月 ¥19,800** | **★STEP6完了・5/15称賛FB送付済み・STEP7着手前** | P0 |

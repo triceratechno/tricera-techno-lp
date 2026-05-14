@@ -1,9 +1,12 @@
 ---
 id: tatsuyan
 display_name: TatsuyaNさん
-status: 第一回FB送付済み・反応待ち
+status: 旧ロードマップ1.0（有料note版）・STEP2進行中・第一回FB送付済み・反応待ち
 priority: P0
-plan: DTMロードマップ（有料note）
+plan: 旧ロードマップ1.0（有料note版）
+plan_price: 9800
+current_progress: STEP2 進行中（5/15時点・確認済み）
+support_period: 〜2026-04-19（公式終了）／STEP2進行中につき延長サポート対象
 contact_method: LINE
 daw: Ableton Live 12
 genre: 歌モノ・メロディが映える曲（ビートジャンル未定）
@@ -18,15 +21,16 @@ references:
   - Valentino Khan & No-Me - What Can I Say（コーラス・全体曲調用 / BPM 134 / A major）
 next_action: ベース打ち込みタイミング修正後の音源待ち / フィルインサンプル送付待ち
 next_action_due: 返信待ち
-last_updated: 2026-05-04
+last_updated: 2026-05-15
 ---
 
 # TatsuyaNさん
 
 ## 🎯 今のステータス
-- **第一回FB送付済み・反応待ち** ／ 優先度 **P0**
-- 2026-05-04 にFB送付（約束「週末まで」より1日遅れ・冒頭で謝罪済み）
+- **旧ロードマップ1.0（有料note版・¥9,800）・STEP2 進行中** ／ 優先度 **P0**
+- 第一回FB送付済み（2026-05-04・「週末まで」より1日遅れ・冒頭で謝罪済み）
 - 反応待ち（ベース修正音源 / フィルサンプル / 質問返信のいずれか）
+- 5/4 のFB内容（ベースをキックの後にずらす等）は STEP2 範囲の指摘なので、進捗STEP2と整合
 
 ## 基本情報
 
