@@ -3,11 +3,12 @@ id: nob
 display_name: NOBさん
 line_display: Nob3578
 nickname: NOB
-status: 旧ロードマップ1.0 完走系・サポート延長中・応援者ポジション
+status: 旧ロードマップ1.0（有料note版）・STEP7進行中・延長サポート中・応援者
 priority: P2
-plan: 旧ロードマップ1.0（有料note・¥9,800）
+plan: 旧ロードマップ1.0（有料note版・¥9,800）
 plan_price: 9800
-support_period: 〜2026-04-19（公式終了）／取り組み中STEPまで延長中
+current_progress: STEP7進行中（5/15時点・確認済み）
+support_period: 〜2026-04-19（公式終了）／STEP7進行中につき延長サポート対象
 contact_method: LINE
 daw: Ableton Live
 dtm_years: 0.25（3ヶ月でロードマップ購入時）→ 現在は実績豊富

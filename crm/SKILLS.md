@@ -17,22 +17,29 @@
 
 ---
 
-## 1. 現在の顧客（12名・2026-05-09時点）
+## 1. 現在の顧客（12名・2026-05-15時点）
 
 | ID | 表示名 | 連絡 | DAW | ジャンル | プラン | ステータス | 優先度 |
 |---|---|---|---|---|---|---|---|
-| minoru | Minoruさん（Y K.） | Discord | Cubase | ジブリ系×ダンス×昭和歌謡 | 旧スタンダード ¥9,800 | 制作進行中（納期5/8目安） | P0 |
-| daiki | DAIKIさん（DAn） | Discord | 未開始 | Techno / Tech House | 旧週1コンサル＋ロードマップ ¥29,600 | 成約済み（入金確認待ち） | P0 |
-| tatsuyan | TatsuyaNさん | LINE | Ableton Live 12 | 歌モノ（ビート未定） | 旧ロードマップ単品 | 第一回FB送付済み・反応待ち | P0 |
-| natsuki | なつきさん（長野大樹） | LINE | GarageBand | Frenchcore / Speedcore | 無料 | 有料化タイミング・返信待ち | P2 |
-| hirokazoo | hirokazooさん（Dさん） | LINE | Bitwig + Spire | PsyTrance | 無料 | 段階的FB継続中・結果待ち | P2 |
-| yasu | やすさん（保浦康晴） | LINE | Ableton Live | Melodic Techno（Anyma好き） | 無料 | LP案内送付済み・反応待ち | P0 |
-| atsuki | ATSUKIさん（♠︎atsuki♪） | LINE | FL Studio | Progressive House | 無料 | Break+LUFS FB送付済み・反応待ち | P0 |
-| yuta | 雄太さん | LINE | Studio One Professional | EDM（軸決定）／エレクトロスウィング | 無料 | EDM軸決定・ジェヘナドロップ課題提示済み | P0 |
-| shoryu | 翔琉さん | LINE | 未確認 | 未確認 | 無料 | 新規・初回質問受領（テンプレ未提出） | P0 |
-| nob | NOBさん（Nob3578） | LINE | Ableton Live | Tech House / House（DJ） | 旧ロードマップ1.0 ¥9,800 | **完走系・サポート延長中・応援者** | P2 |
-| takamatsu | 高松さん（高松泰樹） | LINE | FL Studio | bermei.inazawa風（同人音楽） | 旧ロードマップ1.0 ¥9,800 | **STEP10完走済み・人生転換ストーリー** | P2 |
-| urano | 上野さん（うらの／上野麻弥） | LINE | Bitwig Studio | Minimal Techno（Richie Hawtin志向） | 旧ロードマップ1.0 ¥9,800＋ラボ | **STEP3進行中・応援者・完全初心者→成長中** | P2 |
+| minoru | Minoruさん（Y K.） | Discord | Cubase | ジブリ系×ダンス×昭和歌謡 | 旧スタンダードコース ¥9,800 | 初期納品送付済み・修正FB待ち | P0 |
+| daiki | DAIKIさん（DAn） | Discord | 未開始 | Techno / Tech House | **新ロードマップPRO+3ヶ月 ¥19,800 + ビデオ面談 ¥9,800 = ¥29,600** | 新LP案内送付済み・反応待ち | P0 |
+| tatsuyan | TatsuyaNさん | LINE | Ableton Live 12 | 歌モノ（Krysta共作・I,Manikin） | 旧ロードマップ単品（有料note版） | 第一回FB送付済み・反応待ち | P0 |
+| natsuki | なつきさん（長野大樹） | LINE | GarageBand | Frenchcore / Speedcore | 無料相談中 | 有料化タイミング・返信待ち | P2 |
+| hirokazoo | hirokazooさん（Dさん） | LINE | Bitwig + Spire | PsyTrance | 無料相談中 | 段階的FB継続中・結果待ち | P2 |
+| yasu | **やすさん（保浦康晴）** | LINE | Ableton Live | Melodic Techno（Anyma好き） | **新ロードマップPRO+3ヶ月 ¥19,800** | **★STEP6完了・5/15称賛FB送付済み・STEP7着手前** | P0 |
+| atsuki | ATSUKIさん（♠︎atsuki♪） | LINE | FL Studio | Progressive House | 無料相談中（5回FB済み） | Break+LUFS FB保留中（受動モード） | P2 |
+| yuta | 雄太さん | LINE | Studio One Professional | EDM（軸決定）／エレクトロスウィング | 無料相談中 | EDM軸・ジェヘナドロップ課題進行中（5/15進捗確認時期） | P0 |
+| shoryu | 翔琉さん | LINE | 未確認 | JPOPロック / ボカロP系（ヨルシカ・Orangestar） | 無料相談中 | 第2回返答送付済み・反応待ち | P0 |
+| nob | NOBさん（Nob3578） | LINE | Ableton Live | Tech House / House（DJ） | 旧ロードマップ1.0（有料note版・¥9,800） | **STEP7進行中・延長サポート中・応援者** | P2 |
+| takamatsu | 高松さん（高松泰樹） | LINE | FL Studio | bermei.inazawa風（同人音楽） | 旧ロードマップ1.0（有料note版・¥9,800） | **STEP1〜10 完走済み・人生転換ストーリー** | P2 |
+| urano | **うさださん（上野麻弥）** | LINE | Bitwig Studio | Minimal Techno（Richie Hawtin志向） | 旧ロードマップ1.0（有料note版・¥9,800）＋ラボ | **STEP3進行中・延長サポート中・応援者** | P2 |
+
+### 🎉 新ロードマップPROコース 購入者（2026-05-15時点）
+- **やすさん**：+3ヶ月サポート ¥19,800（STEP6まで完了・順調）
+- **DAIKIさん**：+3ヶ月サポート ¥19,800 + ビデオ面談 ¥9,800（=¥29,600・5/8以降キックオフ予定）
+
+### ⚠️ 名前の訂正記録（2026-05-15）
+- **`urano.md` のニックネーム「うらの」は誤記録 → 正しくは「うさだ」**。ファイルIDのみ互換性のため `urano` のまま維持・内部表記は「うさだ」に統一。
 
 → 詳細は **[`customers/`](customers/)** 配下の各ファイル
 

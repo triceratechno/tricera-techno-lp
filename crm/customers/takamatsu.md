@@ -2,11 +2,12 @@
 id: takamatsu
 display_name: 高松さん
 real_name: 高松泰樹
-status: 旧ロードマップ1.0 完走済み・サポート延長中・人生転換ストーリー
+status: 旧ロードマップ1.0（有料note版）・**STEP1〜STEP10 完走済み**・人生転換ストーリー顧客
 priority: P2
-plan: 旧ロードマップ1.0（有料note・¥9,800）
+plan: 旧ロードマップ1.0（有料note版・¥9,800）
 plan_price: 9800
-support_period: 〜2026-04-19（公式終了）／取り組み中STEP10まで延長中
+current_progress: STEP1〜STEP10 完走済み（5/15時点・確認済み）
+support_period: 〜2026-04-19（公式終了）／完走済みのため延長対象外（必要に応じて単発相談）
 contact_method: LINE
 daw: FL Studio
 dtm_years: 0（完全初心者・ロードマップでDTMに本格挑戦）

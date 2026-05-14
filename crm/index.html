@@ -336,33 +336,33 @@
 
 <div class="stats">
   <div class="stat-card">
-    <div class="stat-label">反応待ち（P0）</div>
-    <div class="stat-value warn" id="stat-today">6</div>
+    <div class="stat-label">新ロードマップ購入者</div>
+    <div class="stat-value ok" id="stat-today">2</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">今週の確認タスク</div>
-    <div class="stat-value warn" id="stat-week">2</div>
+    <div class="stat-label">旧ロードマップ1.0 進行中</div>
+    <div class="stat-value" id="stat-week">2</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">成約・契約中</div>
-    <div class="stat-value ok" id="stat-paid">2</div>
+    <div class="stat-label">旧ロードマップ1.0 完走</div>
+    <div class="stat-value" id="stat-paid">1</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">無料相談・サポート</div>
-    <div class="stat-value" id="stat-free">6</div>
+    <div class="stat-value" id="stat-free">5</div>
   </div>
   <div class="stat-card">
-    <div class="stat-label">完走系（過去顧客）</div>
-    <div class="stat-value" id="stat-active">3</div>
+    <div class="stat-label">旧体系契約中</div>
+    <div class="stat-value" id="stat-active">2</div>
   </div>
 </div>
 
 <div class="alert-banner" id="urgent-banner">
-  <h3>🔴 直近の対応待ち（2026-05-10）</h3>
+  <h3>🟢 新体系PROコース 第1号成功事例：やすさん STEP6完了（2026-05-15）</h3>
   <ul>
-    <li><strong>反応待ち多数</strong>：Minoru（修正FB） / DAIKI（LP案内反応・入金） / TatsuyaN（修正音源） / やす（LP申込判断） / 翔琉（音源依頼判断）</li>
-    <li><strong>5/15予定</strong>：雄太さんのジェヘナドロップ進捗確認</li>
-    <li><strong>沈黙確認候補</strong>：やす（5/5から）／ TatsuyaN（5/4から）／ なつき（返信待ち継続）／ hirokazoo（キックニンジャ結果待ち）</li>
+    <li><strong>やすさん</strong> — 新ロードマップPRO+3ヶ月 ¥19,800 購入 → 約1週間でSTEP6完了 → 5/15 熱量込めた称賛FB送付済み・STEP7着手前</li>
+    <li><strong>DAIKIさん</strong> — 新ロードマップPRO+3ヶ月+ビデオ面談 ¥29,600 ／ LP案内送付済み・反応＋Stripe入金確認待ち</li>
+    <li><strong>反応待ち</strong>：Minoru（修正FB） / TatsuyaN（修正音源） / 翔琉（音源依頼判断） / 雄太（5/15進捗確認時期）</li>
   </ul>
 </div>
 
@@ -370,7 +370,7 @@
   ⚠️ <strong>名前の混同注意</strong>：
   <br>「<strong>Dさん</strong>」= <strong>hirokazoo</strong>（LINE / PsyTrance / Bitwig） ≠ <strong>DAIKI（DAn）</strong>（Discord / Techno / DJ）
   <br>「<strong>mino / Minoru</strong>」（Discord / Cubase / ジブリ系）／「<strong>Nob3578 / NOB</strong>」（LINE / Tech House / DJ）
-  <br>「<strong>♠︎atsuki♪ / ATSUKI</strong>」（LINE / FL Studio / Progressive House）／「<strong>うらの / 上野</strong>」（LINE / Bitwig / Minimal）
+  <br>「<strong>♠︎atsuki♪ / ATSUKI</strong>」（LINE / FL Studio / Progressive House）／「<strong>うさだ / 上野麻弥</strong>」（LINE / Bitwig / Minimal）※過去CRMで「うらの」と誤記録していたが正しくは「うさだ」
   <br>「<strong>やす</strong>」（LINE / Ableton / Anyma系）／「<strong>翔琉</strong>」（LINE / JPOPロック）／「<strong>雄太</strong>」（LINE / Studio One / EDM）
   <br>返信前に必ず<strong>連絡手段・ジャンル・ステータス</strong>の3点で本人を確定させること。
 </div>
@@ -516,8 +516,8 @@ const customers = [
     real: "DAn（大阪）",
     priority: "P0",
     statusKey: "paid",
-    status: "🟢 新LP案内送付済み・反応待ち",
-    plan: "旧週1コンサル＋ロードマップ＋3ヶ月（=新¥19,800+ビデオ面談¥9,800）",
+    status: "🟢 新ロードマップPRO+3ヶ月+ビデオ面談 ¥29,600・LP案内送付済み",
+    plan: "新ロードマップPROコース+3ヶ月サポート ¥19,800 + ビデオ面談 ¥9,800",
     planPrice: "¥29,600",
     nextAction: "DAnさんからの反応 + Stripe入金確認 + 5/8以降のセッション日程提案",
     nextDue: "反応待ち",
@@ -737,16 +737,16 @@ const customers = [
     name: "やすさん",
     real: "保浦康晴",
     priority: "P0",
-    statusKey: "waiting",
-    status: "🟡 ロードマップPROコース案内送付済み・反応待ち",
-    plan: "無料相談中",
-    planPrice: "—",
-    nextAction: "やすさんからの返信待ち（申込 / 質問 / 検討）",
-    nextDue: "反応待ち（5/5から経過中）",
+    statusKey: "paid",
+    status: "🟢 新ロードマップPRO+3ヶ月 ¥19,800 購入済み・STEP6完了・STEP7着手前",
+    plan: "新ロードマップPROコース + 3ヶ月サポート",
+    planPrice: "¥19,800",
+    nextAction: "STEP7着手・進捗報告 or 質問が来たら個別対応",
+    nextDue: "STEP7進捗報告待ち",
     contact: "LINE",
     daw: "Ableton Live",
     genre: "Melodic Techno（Anyma好き）",
-    warning: "Bad Angel のドロップを真似ようとして「同じ音が再現できない」で詰まり中。ホットリード",
+    warning: "★新体系PROコース 第1号成功事例。STEP6完了の5/15に熱量込めた称賛FB送付済み",
     detail: {
       "基本情報": [
         ["連絡手段", "LINE"],
@@ -864,10 +864,10 @@ const customers = [
     real: "Nob3578（DJ・応援者）",
     priority: "P2",
     statusKey: "graduated",
-    status: "🎓 旧ロードマップ1.0 完走系・サポート延長中",
-    plan: "旧ロードマップ1.0",
+    status: "🎓 旧ロードマップ1.0（有料note版）・STEP7進行中・延長サポート中",
+    plan: "旧ロードマップ1.0（有料note版）",
     planPrice: "¥9,800",
-    nextAction: "STEP取り組み中の延長サポート継続・新ロードマップ¥98,000リエンゲージ候補",
+    nextAction: "STEP7取り組み中の延長サポート継続・新ロードマップ¥98,000リエンゲージ候補",
     nextDue: "—",
     contact: "LINE",
     daw: "Ableton Live",
@@ -896,8 +896,8 @@ const customers = [
     real: "高松泰樹",
     priority: "P2",
     statusKey: "graduated",
-    status: "🎓 旧ロードマップ1.0 完走済み・人生転換ストーリー",
-    plan: "旧ロードマップ1.0",
+    status: "🎓 旧ロードマップ1.0（有料note版）・STEP1〜10 完走済み",
+    plan: "旧ロードマップ1.0（有料note版）",
     planPrice: "¥9,800",
     nextAction: "完走者・新¥98,000 LIFETIMEの最有力候補",
     nextDue: "—",
@@ -923,19 +923,19 @@ const customers = [
   },
   {
     id: "urano",
-    name: "上野さん",
-    real: "上野麻弥（うらの）",
+    name: "うさださん",
+    real: "上野麻弥",
     priority: "P2",
     statusKey: "graduated",
-    status: "🎓 旧ロードマップ1.0 + ラボ購入済み・サポート延長中",
-    plan: "旧ロードマップ1.0 + トリケラテクノ・ラボ",
+    status: "🎓 旧ロードマップ1.0（有料note版） + ラボ購入済み・STEP3進行中",
+    plan: "旧ロードマップ1.0（有料note版） + トリケラテクノ・ラボ",
     planPrice: "¥9,800+",
     nextAction: "STEP3進行中の延長サポート継続・新¥98,000 LIFETIMEの最有力候補",
     nextDue: "—",
     contact: "LINE",
     daw: "Bitwig Studio",
     genre: "Minimal Techno（Richie Hawtin志向）",
-    warning: "完全初心者→ラボ購入の応援者。「フリーズタイプ」自認・質問しやすい雰囲気を保つ",
+    warning: "⚠️ 呼び名「うさだ」（過去CRMで「うらの」と誤記）／ 完全初心者→ラボ購入の応援者・「フリーズタイプ」自認",
     detail: {
       "基本情報": [
         ["連絡手段", "LINE"],
@@ -955,7 +955,7 @@ const customers = [
   }
 ];
 
-const dataDate = "2026-05-10";
+const dataDate = "2026-05-15";
 document.getElementById("last-updated").textContent = dataDate;
 document.getElementById("customer-count").textContent = customers.length + "名";
 

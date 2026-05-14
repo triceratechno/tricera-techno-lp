@@ -5,9 +5,9 @@ nickname: DAn
 discord_handle: DAn
 status: 成約済み（入金確認待ち）
 priority: P0
-plan: 週1個別コンサル＋ロードマップ＋3ヶ月サポート
+plan: 新ロードマップPROコース + 3ヶ月サポート + ビデオ面談（特別アドオン）
 plan_price: 29600
-plan_breakdown: 9800 + 19800
+plan_breakdown: 新ロードマップPROコース+3ヶ月サポート ¥19,800 + ビデオ面談 ¥9,800（特別アドオン・通常は週1×4回／DAnさんは3ヶ月中に分散4回の柔軟運用）
 stripe_url: https://buy.stripe.com/9B6cMY1kx4uwflHdyXgEg04
 roadmap_lp: https://note.com/triceratechno/n/n1691164f0ef9
 location: 大阪
@@ -21,7 +21,8 @@ references:
   - Vintage Culture
 strengths: DJとして現場の耳・音の良し悪しの判断力がある
 session_kickoff: 2026-05-08以降（DAIKIさんから日程提案予定）
-plan_breakdown_correct: 旧週1コンサル＋ロードマップ＋3ヶ月 ¥29,600 = 新体系ロードマップPROコース+3ヶ月サポート ¥19,800 + ビデオ面談 ¥9,800（標準は週1×4回／DAnさんは特別対応で3ヶ月中に分散して4回）
+plan_breakdown_correct: ¥29,600 = 新体系ロードマップPROコース+3ヶ月サポート ¥19,800 + ビデオ面談 ¥9,800（標準は週1×4回／DAnさんは特別対応で3ヶ月中に分散して4回）
+※「旧週1コンサル」というプラン名は誤認識だった。実態は新体系の組合せ。
 new_lp_url_sent: https://triceratechno.github.io/roadmap-lp/（5/9送付済み・購入はしないよう注意書き付き）
 next_action: 新LP案内メッセージへのDAnさんからの反応待ち + Stripe入金確認 + 5/8以降のセッション日程提案待ち
 next_action_due: 反応待ち

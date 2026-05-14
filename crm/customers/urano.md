@@ -1,13 +1,15 @@
 ---
 id: urano
-display_name: 上野さん
+display_name: うさださん（上野麻弥さん）
 real_name: 上野麻弥
-nickname: うらの
-status: 旧ロードマップ1.0 + ラボ購入済み・サポート延長中・応援者
+nickname: うさだ
+nickname_note: ⚠️ 過去CRMで「うらの」と誤記録していたが、本人の呼び名は「うさだ」が正しい
+status: 旧ロードマップ1.0（有料note版）+ ラボ購入済み・STEP3進行中・延長サポート中
 priority: P2
-plan: 旧ロードマップ1.0（¥9,800）+ トリケラテクノ・ラボ購入済み
+plan: 旧ロードマップ1.0（有料note版・¥9,800）+ トリケラテクノ・ラボ購入済み
 plan_price: 9800
-support_period: 〜2026-04-19（公式終了）／取り組み中STEP（推定3〜4）まで延長中
+current_progress: STEP3進行中（5/15時点・確認済み）
+support_period: 〜2026-04-19（公式終了）／STEP3進行中につき延長サポート対象
 contact_method: LINE
 daw: Bitwig Studio
 dtm_years: 0（DAWに触ること自体がロードマップで初）
@@ -25,18 +27,22 @@ favorite_tracks:
   - Headstrong (Original Club Mix)
   - Devil's Destination (Original Mix)
 target_dj_artist: Richie Hawtin（DJとしての目標）
-acquisition_channel: LINE登録 → 公式LINE経由でロードマップ購入
-proposal_target_plan: 新ロードマップ ¥98,000 永年サポート（既にラボも購入の応援者・最有力候補）
+acquisition_channel: LINE登録 → 公式LINE経由で旧ロードマップ1.0（有料note版）購入
+proposal_target_plan: 新ロードマップPROコース + 永年サポート ¥98,000（既にラボも購入の応援者・最有力候補）
 purchases:
   - 旧ロードマップ1.0（¥9,800）
   - トリケラテクノ・ラボ（応援を込めて購入・STEP2進行中時点）
   - 「超ためになるDTM解説動画 6本」購入
   - シンセ Serum を新規購入予定（¥30,000）
 relationship: 完全初心者 + 強い応援者・ラボ購入で支援表明
-last_updated: 2026-05-09
+last_updated: 2026-05-15
 ---
 
-# 上野さん（うらの／本名：上野麻弥）
+# うさださん（本名：上野麻弥）
+
+> ⚠️ **呼び名の訂正記録（2026-05-15）**
+> 過去のCRMで「うらの」と記録していたが、トリケラテクノさんの確認によりこれは誤記。本人の呼び名は「**うさだ**」が正しい。LINE上のやり取りでも「うさださん」と呼ばれている前提で対応すること。
+> 互換性のためファイルID（`urano.md`）はそのまま維持しているが、内部表記はすべて「うさだ」に統一。
 
 ## 🎯 今のステータス
 - **旧ロードマップ1.0 + ラボ購入済み・サポート延長中** ／ 優先度 **P2**
