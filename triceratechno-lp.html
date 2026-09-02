@@ -2866,7 +2866,7 @@
 <!-- ===== ANNOUNCE BAR ===== -->
 <div class="announce-bar">
   <span class="announce-dot"></span>
-  3ヶ月LINEサポート　<span id="announceMonth"></span>の受付枠　<strong>残り1名</strong>
+  3ヶ月LINEサポート　<span id="announceMonth"></span>の受付枠　<strong>残り<span data-slots-remaining>2</span>名</strong>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3386,7 +3386,7 @@
           <li>7日間返金保証</li>
         </ul>
         <p style="font-size:12px; color:var(--gold); letter-spacing:0.06em; text-align:center; margin-bottom:10px;">
-          <span class="announce-dot" style="background:var(--gold);"></span><span id="cardMonth"></span>のサポート受付枠　<strong>残り1名</strong>
+          <span class="announce-dot" style="background:var(--gold);"></span><span id="cardMonth"></span>のサポート受付枠　<strong>残り<span data-slots-remaining>2</span>名</strong>
         </p>
         <a href="https://buy.stripe.com/dRm28k9R3f9afIHbqPgEg01" target="_blank" class="buy-btn">今すぐ購入する →</a>
         <p style="margin-top:12px; font-size:11px; color:var(--muted); text-align:center; letter-spacing:0.05em;">Stripeの安全な決済ページへ移動します</p>
@@ -3469,7 +3469,7 @@
           これらを「形式的にこなす」のではなく、<br>
           1人1人の状況に合わせて本気でやり切るには、<br>
           私が同時に向き合える人数に限界があります。<br><br>
-          だから、受付枠は1ヶ月<strong>5名まで</strong>。<br>
+          だから、受付枠は1ヶ月<strong><span data-slots-capacity>5</span>名まで</strong>。<br>
           枠が埋まれば、翌月以降のご案内になります。
         </p>
       </div>
@@ -3805,7 +3805,7 @@
       <p class="review-body">「DTM初心者の私は右も左も分かってませんでした。トリケラさんのロードマップと出会えて、まず何をするのか、曲を最後まで作り上げるには何が必要なのかを教えてもらいました。<strong>トリケラさんはDTMの先生でもあり、優秀なモチベーターでもあった</strong>。挫折しそうな時もトリケラさんの言葉を思い出すとがんばれました。」</p>
     </div>
 
-    <div class="review-card">
+    <div class="review-card review-card--featured">
       <div class="review-header">
         <div class="review-avatar" style="background:none; border:none; padding:0;"><img src="yasu-icon.png" alt="やすさん" style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:block;"></div>
         <div>
@@ -3817,6 +3817,20 @@
       </div>
       <p class="review-oneliner">欲しかった情報が全部ここにあった</p>
       <p class="review-body">「購入前は<strong>曲の製作の仕方がまったく分からない状態</strong>でした。今は毎日曲作りに夢中になっています。根拠づけてしっかり書かれていて率直に読みやすく、<strong>自分が欲しかった情報がたくさん詰まっていた</strong>。友人にもぜひすすめたいです。」</p>
+    </div>
+
+    <div class="review-card review-card--featured">
+      <div class="review-header">
+        <div class="review-avatar" style="background:none; border:none; padding:0;"><img src="eternalfield-icon.jpg" alt="Eternal Fieldさん" style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:block;"></div>
+        <div>
+          <p class="review-name">Eternal Fieldさん</p>
+          <p class="review-meta">DTM歴3年 ・ Ableton Live</p>
+          <div class="review-stars">★★★☆☆</div>
+        </div>
+        <div class="review-badge">STEP 1〜10 完走</div>
+      </div>
+      <p class="review-oneliner">プロの曲の"構造"が、少しずつ見えてきた</p>
+      <p class="review-body">「購入前は、<strong>なかなか曲作りが進まなかった</strong>。今までSTEM分離をしてこなかったので、<strong>"プロの曲ってこうなっているのか"</strong>と、少しだけ解像度が上がった。」</p>
     </div>
 
     <div class="review-card">
@@ -4092,5 +4106,6 @@
 <div class="sticky-cta-bar" role="complementary" aria-label="購入セクションへ">
   <a href="#price" aria-label="価格セクションへスクロール">→ 今すぐ始める</a>
 </div>
+<script src="slots.js"></script>
 </body>
 </html>
